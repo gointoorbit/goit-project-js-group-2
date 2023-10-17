@@ -2,7 +2,7 @@
   "name": "goit-project-js-group-2",
   "version": "1.1.0",
   "description": "",
-  "homepage": "https://github.com/gointoorbit/goit-project-js-group-2",
+  "homepage": "https://gointoorbit.github.io/goit-project-js-group-2/",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url goit-project-js-group-2"
