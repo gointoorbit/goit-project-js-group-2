@@ -4,4 +4,15 @@
  */
 
 // Style dla pliku z przykładem HTML fragmentu
-@import './example';
+@import 'abstracts/colors';
+@import 'abstracts/fonts';
+@import 'abstracts/mixins';
+
+@import 'base/base';
+@import 'base/reset';
+@import 'base/typography';
+
+@import 'components/button';
+@import 'components/modal';
+
+@import 'utils/utils';
