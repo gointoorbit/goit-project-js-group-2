@@ -1,0 +1,30 @@
+:root {
+    // LIGHT MODE
+    --color-background: #F6F6F6;
+    --color-header: #FFF;
+    --color-header-border: #111;
+    --color-list-category: #11111199;
+    --color-selected-category: #4F2EE8;
+    --color-slider: #E0E0E0;
+    --color-main-font: #111;
+    
+    // CONST COLOR
+    --color-purple-btn: #4F2EE8;
+    --color-yellow-btn: #EAC645;
+    --color-black-btn: #111;
+    --color-purple-title: #4F2EE8;
+    --color-author-font: #B4AFAF;
+    --color-shoping-border: #4F2EE866;
+    --color-modal-background: #11111166;
+}
+
+.darkmode {
+    // DARK MODE
+    --color-background: #202024;
+    --color-header: #111;
+    --color-header-border: #FFF;
+    --color-list-category: #FFFFFF99;
+    --color-selected-category: #EAC645;
+    --color-slider: #11111199
+    --color-main-font: #FFF;
+}
