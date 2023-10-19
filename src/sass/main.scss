@@ -3,13 +3,13 @@
  * Wszystkie partials podłączamy tutaj.
  */
 
-// Style dla pliku z przykładem HTML fragmentu
+@import 'base/reset';
+
+@import 'abstracts/mixins';
 @import 'abstracts/colors';
 @import 'abstracts/fonts';
-@import 'abstracts/mixins';
 
 @import 'base/base';
-@import 'base/reset';
 @import 'base/typography';
 
 @import 'components/button';
