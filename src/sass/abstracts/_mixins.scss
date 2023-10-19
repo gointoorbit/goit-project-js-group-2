@@ -1,0 +1,59 @@
+//ROZDZIELCZOŚĆ
+// Jak stosować - przykład:
+// .class-name {
+//         border-radius: 10px;
+//         @include tablet {
+//             border-radius: 20px;
+//         }
+//         @include desktop {
+//             border-radius: 25px;
+//         }
+//     }
+
+@mixin mobile {
+  @media screen and (min-width: 375px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
+
+//CZCIONKI
+// Jak stosować - przykłady:
+// @include font(14px, 700, 0.25px, 1.5);
+// @include font(18px, 400, null, null);
+
+@mixin font($font-size, $font-weight, $letter-spacing, $line-heigh) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  letter-spacing: $letter-spacing;
+  line-height: $line-heigh;
+}
+
+//ANIMATION
+// Jak stosować - przykłady:
+// @include animation(transform);
+// @include animation(color);
+
+@mixin animation($type) {
+  transition: $type 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+//Kontener FLEX
+// Jak stosować - przykład:
+// @include flex-align;
+@mixin flex-align {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
