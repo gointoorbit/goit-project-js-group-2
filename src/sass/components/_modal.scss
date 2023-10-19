@@ -1,14 +1,31 @@
-.btn-modal-open {
-  padding: 10px 76px;
-  margin-bottom: 40px;
-  background: var(--blue-color);
+// .btn-modal-open {
+//   padding: 10px 76px;
+//   margin-bottom: 40px;
+//   background: var(--blue-color);
+//   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+//   border: none;
+//   cursor: pointer;
+// }
+// .btn-modal-open:hover {
+//   transform: scale(1.1);
+// }
+.random-book {
+ margin: 30px ;
+ width: 500px;
+  background: lightblue;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.btn-modal-open:hover {
-  transform: scale(1.1);
+.random-book:hover {
+  background: rgb(84, 177, 208);
 }
+
+
 
 .backdrop {
   position: fixed;
@@ -44,6 +61,12 @@
   border: 2px solid black;
   border-radius: 18px;
 }
+.book {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .button {
   padding: 10px 76px;
@@ -70,7 +93,4 @@
   transform: scale(1.1);
 }
 
-.book {
-  width: auto;
-  height: auto;
-}
+

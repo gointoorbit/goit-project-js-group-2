@@ -20,6 +20,7 @@
 const randomBookContainer = document.querySelector('.random-book');
 const titleElement = randomBookContainer.querySelector('#title');
 const authorElement = randomBookContainer.querySelector('#author');
+const descriptionElement = randomBookContainer.querySelector('#description')
 const coverElement = randomBookContainer.querySelector('#cover');
 const buyLinkElement = randomBookContainer.querySelector('#buy-link');
 
@@ -36,7 +37,7 @@ async function getRandomBook() {
       coverElement.src = randomBook.book_image;  
       titleElement.textContent = 'Tytuł: ' + randomBook.title;
       authorElement.textContent = 'Autor: ' + randomBook.author;
-     
+      descriptionElement.textContent = 'Opis: ' + randomBook.description;  
       buyLinkElement.href = randomBook.amazon_product_url;
       buyLinkElement.textContent = 'Kup teraz';
     } else {
@@ -61,7 +62,7 @@ function copyRandomBookToBook() {
 }
 
 // Obsługa przycisku "Open Modal"
-const modalButton = document.querySelector('.btn-modal-open');
+const modalButton = document.querySelector('[btn-modal-open]');
 modalButton.addEventListener('click', function () {
   // Wywołaj funkcję, aby skopiować zawartość ".random-book" do ".book"
   copyRandomBookToBook()
