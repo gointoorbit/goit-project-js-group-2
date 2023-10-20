@@ -27,6 +27,64 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
       background-image: url('/src/images/mobile_menu_background@2x.png'), $gradient-background;
     }
   }
+  &__user {
+    padding: 0 66px;
+    top: 24px;
+    color: #fff;
+  }
+  &__menu__nav {
+    display: flex;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__link-home {
+    display: flex;
+    color: #111;
+    padding: 8px 16px;
+    font-family: DM Sans;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -0.56px;
+    text-transform: uppercase;
+    background-color: var(--color-yellow-btn);
+    border-radius: 36px;
+    justify-content: center;
+    align-items: center;
+  }
+  &__link-cart {
+    color: var(--color-header);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+  }
+
+  &__icon-cart {
+    color: #fff;
+  }
+
+  &__logout__btn {
+    text-align: center;
+    width: 118px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 18px;
+    border: 1.5px solid #111;
+    background: #fff;
+    bottom: 20px;
+    left: 20px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__logout__arrow {
+    color: var(--color-yellow-btn);
+  }
 }
 
 // .menu-container.is-open {
