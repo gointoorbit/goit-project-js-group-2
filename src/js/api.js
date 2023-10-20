@@ -2,9 +2,9 @@ import axios from "axios";
 
 const topBooks = "top-books";
 const categoryList = "category-list";
-let bookID; // ID książki
-let category; // nazwa kategorii
-const categorySelected = `category?category=${category}`; // zmienna do wywołania konkretnej kategorii
+//let bookID; // ID książki
+//let category; // nazwa kategorii
+//const categorySelected = `category?category=${category}`; zmienna do wywołania konkretnej kategorii
 
 const getBooksApi = (value) => {
     return axios
@@ -14,18 +14,18 @@ const getBooksApi = (value) => {
     })
 }
 
-export {getBooksApi, topBooks, categoryList, bookID, categorySelected, category};
+export {getBooksApi, topBooks, categoryList};
 
 //-------------poniżej przykład wywołania funkcji pobierającej dane z api-------------//
 
-getBooksApi(categoryList)
-    .then (api => {
-        return showMyCategory(api.data[0].list_name)
-    })
-    .catch(error => {
-        console.log(error)
-    })
+// getBooksApi(categoryList)
+//     .then (api => {
+//         return showMyCategory(api.data[0].list_name)
+//     })
+//     .catch(error => {
+//         console.log(error)
+//     })
 
-const showMyCategory = (myCategoryName) => {
-    console.log(myCategoryName, " <-- Przykład pobrania danych z API")
-}
+// const showMyCategory = (myCategoryName) => {
+//     console.log(myCategoryName, " <-- Przykład pobrania danych z API")
+// }
