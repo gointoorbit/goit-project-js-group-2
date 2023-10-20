@@ -1,0 +1,173 @@
+.shopping-content {
+  background-color: var(--color-background);
+}
+
+.shopping-title {
+  color: var(--color-main-font);
+  padding-top: 40px;
+  margin-bottom: 40px;
+  @include font(32px, 700, -1.28px, 1.1875);
+  &__accent {
+    color: var(--color-purple-title);
+  }
+  @include tablet {
+    @include font(48px, 700, -1.92px, 1.0833);
+  }
+}
+
+.shopping-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 120px auto 0;
+  width: 265px;
+  @include tablet {
+    width: 349px;
+    margin-top: 140px;
+    gap: 20px;
+  }
+  &__text {
+    color: var(--color-info-empty);
+    text-align: center;
+    width: calc(100% - 21px);
+    @include font(14px, 400, -0.28px, 1.2857);
+    @include tablet {
+      @include font(18px, 400, -0.36px, 1.3333);
+      width: 100%;
+    }
+  }
+}
+
+.card-item {
+  &__box {
+    position: relative;
+    margin: 0 auto 20px;
+    display: flex;
+    width: 335px;
+    height: 170px;
+    padding: 14px;
+    align-items: flex-start;
+    gap: 14px;
+    border-radius: 16px;
+    border: 2px solid rgba(79, 46, 232, 0.4);
+    background: var(--color-header);
+    @include tablet {
+      width: 704px;
+      height: 213px;
+      padding: 24px;
+      gap: 24px;
+    }
+    @include desktop {
+      width: 996px;
+      height: 213px;
+    }
+  }
+  &__img-box {
+    width: 100px;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    @include tablet {
+      width: 116px;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__title {
+    width: 144px;
+    height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include font(16px, 700, -0.64px, 1.125);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    color: var(--color-header-border);
+    @include tablet {
+      width: 400px;
+    }
+    @include desktop {
+      width: 650px;
+    }
+  }
+  &__category {
+    width: 165px;
+    height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include font(12px, 400, 0.36px, 1.1667);
+    margin-bottom: 8px;
+    color: var(--color-author-font);
+    @include tablet {
+      width: 400px;
+    }
+    @include desktop {
+      width: 650px;
+    }
+  }
+  &__description {
+    width: 193px;
+    height: 56px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    @include font(14px, 400, -0.56px, 1.2857);
+    margin-bottom: 14px;
+    color: var(--color-header-border);
+    @include tablet {
+      width: 508px;
+    }
+    @include desktop {
+      width: 808px;
+    }
+  }
+
+  &__author {
+    width: 128px;
+    height: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    @include font(12px, 400, -0.48px, 1.1667);
+    font-style: italic;
+    margin-bottom: 8px;
+    color: var(--color-author-font);
+    @include tablet {
+      width: 300px;
+    }
+    @include desktop {
+      width: 650px;
+    }
+  }
+}
+
+.remove-button {
+  position: absolute;
+  @include flex-align;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  background-color: var(--color-purple-btn);
+  border-radius: 50%;
+  @include tablet {
+    top: 24px;
+    right: 24px;
+  }
+  &__icon {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
+    @include tablet {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
