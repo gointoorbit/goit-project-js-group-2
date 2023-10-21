@@ -2,17 +2,17 @@ const supportArray = [
     {
       title: 'Save the Children',
       url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis',
-      img: '/src/images/images-support/support1.svg',
+      img: './src/images/images-support/support1.svg',
     },
     {
       title: 'Project HOPE',
       url: 'https://www.projecthope.org/country/ukraine/',
-      img: '/src/images/images-support/support2.svg',
+      img: './src/images/images-support/support2.svg',
     },
     {
       title: 'International Medical Corps',
       url: 'https://internationalmedicalcorps.org/country/ukraine/',
-      img: '/src/images/images-support/support3.svg',
+      img: './src/images/images-support/support3.svg',
     },
     {
       title: 'RAZOM',
