@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 
 
 const topBooks = "top-books";
@@ -19,8 +19,7 @@ const getBooksApi = (value) => {
 
 export {getBooksApi, topBooks, categoryList};
 
-
-// //-------------poniżej przykład wywołania funkcji pobierającej dane z api-------------//
+//-------------poniżej przykład wywołania funkcji pobierającej dane z api-------------//
 
 // getBooksApi(categoryList)
 //     .then (api => {
