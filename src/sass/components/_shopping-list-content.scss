@@ -197,9 +197,16 @@
 
 .shops-list {
   &__link {
-    &:hover .shops-list__icon-img,
-    &:focus .shops-list__icon-img {
-      transform: scale(1.1);
+    font-size: 7px;
+    &:hover .shops-list__icon-img-amazon,
+    &:focus .shops-list__icon-img-amazon {
+      filter: var(--amazon-icon-filter-focus);
+      transform: scale(1.15);
+    }
+    &:hover .shops-list__icon-img-apple,
+    &:focus .shops-list__icon-img-apple {
+      filter: var(--apple-icon-filter-focus);
+      transform: scale(1.15);
     }
   }
   @include flex-align;
@@ -225,9 +232,14 @@
       }
     }
   }
-  &__icon-img {
+  &__icon-img-apple {
     filter: grayscale(100%);
     transform: scale(1);
+    @include animation(transform);
+  }
+  &__icon-img-amazon {
+    filter: var(--amazon-icon-filter);
+    transform: scale(1.07);
     @include animation(transform);
   }
 }
