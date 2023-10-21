@@ -45,12 +45,18 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background-color: var(--color-header);
-    transition: 1s linear;
+    background-image: linear-gradient(180deg, #fff 0%, #f7f7f7 100%);
+    // transition: 0.2s linear;
+    transition: position 1s linear;
   }
 
-  &.dark-mode-on::before {
-    top: 0;
-    right: 0;
-  }
+  // &.dark-mode-on ::before {
+  //   right: 0;
+
+  // }
+}
+
+.theme-switcher__toggler.dark-mode-on::before {
+  right: 0;
+  // }
 }
