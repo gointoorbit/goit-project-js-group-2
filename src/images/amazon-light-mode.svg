@@ -1,9 +1,9 @@
 <!-- do html można wstawić jako:     <img src="./images/amazon-light-mode.svg" /> -->
 
 <svg width="62" height="20" viewBox="0 0 62 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect width="62" height="20" fill="#D0D0D0"/>
+<rect width="62" height="20" fill="none"/>
 <g id="Pop up">
-<rect x="-255" y="-209" width="577" height="463" rx="17" fill="white"/>
+<rect x="-255" y="-209" width="577" height="463" rx="17" fill="none"/>
 <g id="links">
 <g id="image 1" style="mix-blend-mode:luminosity">
 <rect y="0.5" width="62" height="19" fill="url(#pattern0)"/>
