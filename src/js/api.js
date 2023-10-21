@@ -1,18 +1,21 @@
 import axios from "axios";
 
+
 const topBooks = "top-books";
 const categoryList = "category-list";
 //let bookID; // ID książki
 //let category; // nazwa kategorii
 //const categorySelected = `category?category=${category}`; zmienna do wywołania konkretnej kategorii
 
+
 const getBooksApi = (value) => {
-    return axios
-    .get(`https://books-backend.p.goit.global/books/${value}`)
-    .then(respons => {
-        return respons
-    })
-}
+     return axios
+     .get(`https://books-backend.p.goit.global/books/${value}`)
+     .then(respons => {
+         return respons
+     })
+ }
+
 
 export {getBooksApi, topBooks, categoryList};
 
