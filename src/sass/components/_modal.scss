@@ -1,17 +1,16 @@
-// .btn-modal-open {
-//   padding: 10px 76px;
-//   margin-bottom: 40px;
-//   background: var(--blue-color);
-//   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
-//   border: none;
-//   cursor: pointer;
-// }
-// .btn-modal-open:hover {
-//   transform: scale(1.1);
-// }
+// div roboczyzy
+
+.roboczy {
+  margin: 0 auto;
+  width: 300px;
+  background-color: lightgrey;
+  font-size: 30px;
+  text-align: center;
+}
+
 .random-book {
- margin: 30px ;
- width: 500px;
+ margin: 30px auto ;
+ width: 250px;
   background: lightblue;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
   border: none;
@@ -20,12 +19,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 .random-book:hover {
   background: rgb(84, 177, 208);
 }
 
 
+// style okna modalnego
+
+.is-hidden {
+  scale: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 
 .backdrop {
   position: fixed;
@@ -37,39 +45,47 @@
 
   transition-property: opacity, scale, visibility;
   transition-duration: 1s;
-}
-.is-hidden {
-  scale: 0;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 1000px;
-  height: 1000px;
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  width: 335px;
+  height: auto;
   background-color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-
-  border: 2px solid black;
+  
+  border: 2px solid #111111;
   border-radius: 18px;
+
 }
+
+
 .book {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.button__container {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
+.cover__img {
+  width: 287px;
+  height: 408px;
+  border-radius: 8px;
+}
 .button {
-  padding: 10px 76px;
+  padding: 10px 16px;
   margin-bottom: 40px;
   background: var(--blue-color);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
@@ -82,15 +98,18 @@
 }
 
 .close-btn {
-  padding: 10px;
-  background: var(--blue-color);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
-  border: none;
-  cursor: pointer;
+ width: 24px;
+ height: 24px;
+
+ margin: 12px 0 0 299px;
+ cursor: pointer;
+ font-size: 12px;
 }
 
 .close-btn:hover {
   transform: scale(1.1);
+  background-color: darkgray;
+  border-radius: 50%;
 }
 
 
