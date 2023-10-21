@@ -131,7 +131,6 @@
 
   &__author {
     width: 128px;
-    height: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -146,20 +145,30 @@
       width: 650px;
     }
   }
+  &__author-box {
+    height: 12px;
+  }
 }
 
 .remove-button {
   position: absolute;
-  @include flex-align;
   top: 14px;
   right: 14px;
-  width: 34px;
-  height: 34px;
-  background-color: var(--color-purple-btn);
-  border-radius: 50%;
   @include tablet {
     top: 24px;
     right: 24px;
+  }
+  &__box {
+    @include flex-align;
+    width: 34px;
+    height: 34px;
+    background-color: var(--color-purple-btn);
+    border-radius: 50%;
+
+    &:hover,
+    &:focus {
+      box-shadow: 0px 0px 12px 6px var(--color-info-empty);
+    }
   }
   &__icon {
     width: 16px;
@@ -169,5 +178,56 @@
       width: 18px;
       height: 18px;
     }
+  }
+}
+
+.card-item {
+  &__info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__info-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+}
+
+.shops-list {
+  &__link {
+    &:hover .shops-list__icon-img,
+    &:focus .shops-list__icon-img {
+      transform: scale(1.1);
+    }
+  }
+  @include flex-align;
+  align-items: flex-end;
+  gap: 8px;
+  @include tablet {
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__icon-box {
+    @include flex-align;
+    &--amazon {
+      width: 32px;
+      @include tablet {
+        width: 48px;
+      }
+    }
+    &--apple {
+      width: 16px;
+      @include tablet {
+        width: 28px;
+      }
+    }
+  }
+  &__icon-img {
+    filter: grayscale(100%);
+    transform: scale(1);
+    @include animation(transform);
   }
 }
