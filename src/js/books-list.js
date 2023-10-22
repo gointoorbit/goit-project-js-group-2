@@ -1,17 +1,29 @@
 import {getBooksApi, categoryList, topBooks} from "./api.js"
 const boxCategories = document.querySelector(".books__categories ul")
 const itemCategory = document.querySelector(".books__list ul")
+let lastCategory;
+
+const changeCategoryColor = (category) => {
+    if (lastCategory) {
+        lastCategory.classList.remove("change-category-color")
+    }
+    category.classList.add("change-category-color")
+    lastCategory = category
+}
 
 const sendCategory = (categoryName) => {
+
+    changeCategoryColor(categoryName)
+
     let categorySelected;
-    if (categoryName === "All categories") {
+    if (categoryName.innerHTML === "All categories") {
         categorySelected = topBooks
         getBooksApi(categorySelected)
         .then (category => {
             return showTopBooks(category.data)
         })
     } else {
-        categorySelected = `category?category=${categoryName}`;
+        categorySelected = `category?category=${categoryName.innerHTML}`;
         getBooksApi(categorySelected)
         .then (category => {
             return showCategory(category)
@@ -35,7 +47,7 @@ const allCategory = (categoryName) => {
         category.innerHTML = `${element.list_name}`
     });
     
-    boxCategories.addEventListener("click", () => sendCategory(event.target.innerHTML))
+    boxCategories.addEventListener("click", () => sendCategory(event.target))
 }
 
 const showCategory = (category) => {
@@ -50,7 +62,8 @@ const showCategory = (category) => {
     })
 }
 
-sendCategory("All categories")
+sendCategory(boxCategories.firstElementChild)
+
 
 const showTopBooks = TopBooks => {
     itemCategory.innerHTML = ""
