@@ -1,4 +1,6 @@
 const body = document.querySelector('body');
+const themeSwitcher = document.querySelector('.theme-switcher');
+const themeIndicator = document.querySelector('.theme-switcher__toggler');
 let theme = localStorage.getItem('theme') || 'light';
 
 const ThemeMode = () => {
@@ -18,16 +20,5 @@ if (theme === 'dark') {
   body.classList.add('darkmode');
   themeIndicator.classList.add('dark-mode-on');
 }
-
-// narazie nie ma buttona od darkmoda więc darkmoda przełącza
-// sie tym 2 enterem tym prawym w rogu klawiatury
-document.addEventListener('keydown', event => {
-  if (event.code === 'NumpadEnter') {
-    ThemeMode();
-  }
-});
-
-const themeSwitcher = document.querySelector('.theme-switcher');
-const themeIndicator = document.querySelector('.theme-switcher__toggler');
 
 themeSwitcher.addEventListener('click', ThemeMode);
