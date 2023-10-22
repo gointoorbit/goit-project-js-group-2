@@ -1,24 +1,55 @@
 <header class="header">
   <div class="header__wrapper container">
-    <div class="header__brand-items">
-      <a href="./index.html" class="header__logo-link">
-        <div class="header__logo-wrapper">
-          <svg class="header__logo-icon" width="24" height="24">
-            <use href="./images/icons.svg#icon-logo"></use>
-          </svg>
-        </div>
-      </a>
-      <svg class="header__brand-name" width="77" height="13">
-        <use href="./images/icons.svg#icon-bookshelf"></use>
-      </svg>
+    <div class="header__navigation-wrapper">
+      <div class="header__brand-items">
+        <a href="./index.html" class="header__logo-link">
+          <div class="header__logo-wrapper">
+            <svg class="header__logo-icon" width="24" height="24">
+              <use href="./images/icons.svg#icon-logo"></use>
+            </svg>
+          </div>
+        </a>
+        <a href="./index.html" class="header__brand-name-link">
+          <div class="header__brand-name-wrapper">
+            <svg class="header__brand-name-icon" width="77" height="13">
+              <use href="./images/icons.svg#icon-bookshelf"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+      <nav class="navigation">
+        <ul class="navigation__list">
+          <li class="navigation__item">
+            <a class="navigation__link navigation__link--current" href="./index.html">HOME</a>
+          </li>
+          <li class="navigation__item">
+            <a class="navigation__link" href="./shopping-list.html"
+              >SHOPPING LIST<svg class="navigation__icon" width="20" height="20">
+                <use href="./images/icons.svg#icon-cart"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
     </div>
-    <div class="header__navigation">
+    <div class="header__user-settings">
       <button type="button" class="theme-switcher">
         <div class="theme-switcher__toggler"></div>
       </button>
-      <button type="button" class="header__mobile-menu-button">
-        <svg class="header__mobile-menu-icon js-open-menu" width="28" height="28">
+      <button type="button" class="header__mobile-menu-button js-open-menu">
+        <svg class="header__mobile-menu-icon" width="28" height="28">
           <use href="./images/icons.svg#icon-mobile-menu"></use>
+        </svg>
+      </button>
+      <button class="header__sign-up-btn" type="button">
+        <div class="header__sign-up-wrapper">
+          <svg class="header__user-icon" width="19" height="19">
+            <use href="./images/icons.svg#icon-user"></use>
+          </svg>
+        </div>
+        Sign up
+        <svg class="header__sign-up-icon" width="23" height="26">
+          <use href="./images/icons.svg#icon-arrow-triangle-down"></use>
         </svg>
       </button>
     </div>
