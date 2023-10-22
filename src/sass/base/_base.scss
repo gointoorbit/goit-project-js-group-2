@@ -13,3 +13,11 @@
     padding: 0 24px;
   }
 }
+
+main {
+  padding-top: 64px;
+
+  @include tablet {
+    padding-top: 72px;
+  }
+}
