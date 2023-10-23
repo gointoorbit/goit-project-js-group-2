@@ -2,6 +2,12 @@ body {
     background-color: var(--color-background);
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .books {
     padding-top: 30px;
     padding-left: 20px;
@@ -12,6 +18,10 @@ body {
         color: var(--color-list-category);
         cursor: pointer;
         margin-bottom: 30px;
+        overflow: auto;
+        height: 230px;
+        width: 335px;
+        line-height: 28px;
     }
     &__header {
         color: var(--color-header-border);
@@ -19,7 +29,7 @@ body {
         font-size: 32px;
         font-style: normal;
         font-weight: 700;
-        line-height: 1.2px;
+        line-height: 32px;
         letter-spacing: -1.28px;
         &--color {
             color: var(--color-purple-btn);
@@ -27,8 +37,9 @@ body {
     }
     &__list {
         padding-top: 40px;
+        width: 335px;
 
-        &--categories {
+        &--category {
             color: var(--color-author-font);
             font-family: DM Sans;
             font-size: 14px;
@@ -41,6 +52,8 @@ body {
         &--image {
             padding-top: 18px;
             border-radius: 8px;
+            width: 385px;
+            height: 485px;
         }
         &--description {
             padding-top: 14px;
