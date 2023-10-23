@@ -1,48 +1,58 @@
+import support1 from '/src/images/images-support/support1.svg';
+import support2 from '/src/images/images-support/support2.svg';
+import support3 from '/src/images/images-support/support3.svg';
+import support4 from '/src/images/images-support/support4.svg';
+import support5 from '/src/images/images-support/support5.svg';
+import support6 from '/src/images/images-support/support6.svg';
+import support7 from '/src/images/images-support/support7.svg';
+import support8 from '/src/images/images-support/support8.svg';
+import support9 from '/src/images/images-support/support9.svg';
+
 const supportArray = [
     {
       title: 'Save the Children',
       url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis',
-      img: './src/images/images-support/support1.svg',
+      img: support1,
     },
     {
       title: 'Project HOPE',
       url: 'https://www.projecthope.org/country/ukraine/',
-      img: './src/images/images-support/support2.svg',
+      img: support2,
     },
     {
       title: 'International Medical Corps',
       url: 'https://internationalmedicalcorps.org/country/ukraine/',
-      img: './src/images/images-support/support3.svg',
+      img: support3,
     },
     {
       title: 'RAZOM',
       url: 'https://www.razomforukraine.org/',
-      img: '/src/images/images-support/support4.svg',
+      img: support4,
     },
     {
       title: 'Action against hunger',
       url: 'https://www.actionagainsthunger.org/location/europe/ukraine/',
-      img: '/src/images/images-support/support5.svg',
+      img: support5,
     },
     {
       title: 'Serhiy Prytula Charity Foundation',
       url: 'https://prytulafoundation.org/en',
-      img: '/src/images/images-support/support6.svg',
+      img: support6,
     },
     {
       title: 'UNITED24',
       url: 'https://u24.gov.ua/uk',
-      img: '/src/images/images-support/support7.svg',
+      img: support7,
     },
     {
       title: 'Medecins Sans Frontieres',
       url: 'https://www.msf.org/ukraine',
-      img: '/src/images/images-support/support8.svg',
+      img: support8,
     },
     {
       title: 'World vision',
       url: 'https://www.wvi.org/emergencies/ukraine',
-      img: '/src/images/images-support/support9.svg',
+      img: support9,
     },
 ]
   
@@ -93,22 +103,24 @@ const supportArray = [
     item.style.minHeight = `${sliderItemHeight}px`;
   });
   
-//   sliderButton.addEventListener('click', () => {
-//     const itemsBottom = getItemsBottom();
+
+
+  sliderButton.addEventListener('click', () => {
+    const itemsBottom = getItemsBottom();
   
-//     if (itemsBottom >= slidesToScroll) {
-//       position -= movePosition;
-//     } else {
-//       position = 0;
-//     }
+    if (itemsBottom >= slidesToScroll) {
+      position -= movePosition;
+    } else {
+      position = 0;
+    }
   
-//     list.style.transition = 'transform 0.3s ease-out';
-//     setPosition();
+    list.style.transition = 'transform 0.3s ease-out';
+    setPosition();
   
-//     setTimeout(() => {
-//       list.style.transition = '';
-//     }, 300);
-//   });
+    setTimeout(() => {
+      list.style.transition = '';
+    }, 300);
+  });
   
   window.addEventListener('resize', () => {
     itemsCount = itemsSupport.length;
