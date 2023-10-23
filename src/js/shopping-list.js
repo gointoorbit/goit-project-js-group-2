@@ -1,6 +1,8 @@
 import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
 
+// Simulation of adding books to Shopping List (Local Storage) //
+// It will be deleted when adding books Ids to Local Storage from main page will work //
 const booksIdToLocalStorage = [
   '643282b1e85766588626a0dc',
   '643282b1e85766588626a0ba',
@@ -9,22 +11,21 @@ const booksIdToLocalStorage = [
   '643282b1e85766588626a0be',
   '643282b2e85766588626a110',
 ];
-
-const cardsList = document.querySelector('.cards-list');
 localStorage.save('test-Ids', booksIdToLocalStorage);
+// ----------------------------------------------------------- //
 
-const booksIDList = localStorage.load('test-Ids');
+let booksIdList = [];
+const cardsList = document.querySelector('.cards-list');
+const shoppingEmpty = document.querySelector('.shopping-empty');
+shoppingEmpty.style.display = 'none';
 
+// Function: Creating book-card markup and adding to DOM //
 const showMyBook = myBook => {
   const { _id, book_image, title, list_name, description, author, buy_links } = myBook;
-  //console.log(_id);
   const markup = `<li class="card-item">
         <div class="card-item__box">
           <div class="remove-button">
             <button type="button" class="remove-button__box" data-id="${_id}">
-              <svg class="remove-button__icon">
-                <use href="./images/icons.svg#icon-trash"></use>
-              </svg>
             </button>
           </div>
           <div class="card-item__img-box">
@@ -84,12 +85,53 @@ const showMyBook = myBook => {
       </li>`;
   cardsList.insertAdjacentHTML('beforeend', markup);
 };
-for (const bookID of booksIDList) {
-  getBooksApi(bookID)
-    .then(book => {
-      return showMyBook(book.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-}
+
+// Fetch books by IDs from array and render list //
+const renderList = array => {
+  array.forEach(bookID => {
+    getBooksApi(bookID)
+      .then(book => {
+        return showMyBook(book.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  });
+};
+
+// Load / refresh page event listener //
+window.addEventListener('load', () => {
+  cardsList.innerHTML = '';
+  booksIdList = localStorage.load('test-Ids'); // <--- change "key" - test-Ids
+  if (booksIdList.length === 0) {
+    shoppingEmpty.style.display = 'flex';
+    cardsList.removeEventListener('click', removeCardHandler);
+    return;
+  }
+  renderList(booksIdList);
+  cardsList.addEventListener('click', removeCardHandler);
+});
+
+// Function: remove card by book ID //
+const removeCard = cardId => {
+  const indexToRemove = booksIdList.indexOf(cardId);
+  booksIdList.splice(indexToRemove, 1);
+  localStorage.save('test-Ids', booksIdList); // <--- change "key" - test-Ids
+  cardsList.innerHTML = '';
+
+  if (booksIdList.length === 0) {
+    shoppingEmpty.style.display = 'flex';
+    cardsList.removeEventListener('click', removeCardHandler);
+    return;
+  }
+  renderList(booksIdList);
+};
+
+// Event handler: remove button "click" //
+const removeCardHandler = event => {
+  if (!event.target.classList.contains('remove-button__box')) {
+    return;
+  }
+  const removeCardId = event.target.dataset.id;
+  removeCard(removeCardId);
+};

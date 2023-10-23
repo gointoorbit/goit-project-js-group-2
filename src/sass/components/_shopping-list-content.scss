@@ -164,19 +164,17 @@
     height: 34px;
     background-color: var(--color-purple-btn);
     border-radius: 50%;
+    background-image: url('../images/icon-trash.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    @include tablet {
+      background-size: 18px 18px;
+    }
 
     &:hover,
     &:focus {
-      box-shadow: 0px 0px 12px 6px var(--color-info-empty);
-    }
-  }
-  &__icon {
-    width: 16px;
-    height: 16px;
-    fill: #fff;
-    @include tablet {
-      width: 18px;
-      height: 18px;
+      box-shadow: 0px 0px 12px 4px var(--color-info-empty);
     }
   }
 }
@@ -233,13 +231,15 @@
     }
   }
   &__icon-img-apple {
+    content: url('../images/apple-books.svg');
     filter: grayscale(100%);
     transform: scale(1);
     @include animation(transform);
   }
   &__icon-img-amazon {
+    content: url('../images/amazon-light-mode.svg');
     filter: var(--amazon-icon-filter);
-    transform: scale(1.07);
+    transform: scale(1.1);
     @include animation(transform);
   }
 }
