@@ -32,7 +32,7 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
     top: 24px;
     color: #fff;
   }
-  .mobile-menu__center {
+  &__center {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,11 +55,13 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
     letter-spacing: -0.56px;
     text-transform: uppercase;
     border-radius: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__link-text {
     color: var(--color-header);
     display: flex;
-
     text-transform: uppercase;
     margin-top: 16px;
   }
@@ -68,22 +70,7 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
     fill: #fff;
   }
 
-  &__logout__btn {
-    position: absolute;
-
-    justify-content: flex-end;
-    width: 118px;
-    height: 48px;
-    flex-shrink: 0;
-    border-radius: 18px;
-    border: 1.5px solid #111;
-    background: #fff;
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-
-  &__logout__arrow {
-    fill: var(--color-yellow-btn);
+  &__logout {
   }
 }
 
