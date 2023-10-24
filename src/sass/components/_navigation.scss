@@ -23,7 +23,7 @@
     @include font($fs14, $fw500, -0.56px, 1.29);
     font-family: $main-fonts;
 
-    &.navigation__link--current {
+    &__link--current {
       color: var(--color-black-btn);
       background-color: var(--color-yellow-btn);
       @include font($fs14, $fw700, -0.56px, 1.29);
