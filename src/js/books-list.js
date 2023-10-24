@@ -1,6 +1,7 @@
 import {getBooksApi, categoryList, topBooks} from "./api.js"
 const boxCategories = document.querySelector(".books__categories ul")
 const itemCategory = document.querySelector(".books__list ul")
+const categoryTitle = document.querySelector(".books__header")
 let lastCategory;
 
 const changeCategoryColor = (category) => {
@@ -11,8 +12,17 @@ const changeCategoryColor = (category) => {
     lastCategory = category
 }
 
-const sendCategory = (categoryName) => {
+const changeTitleColor = (element) => {
+    const title = element.split(" ")
+    const lastElement = title.pop()
+    const titleShort = title.join(" ")
+    categoryTitle.innerHTML = `${titleShort} 
+        <span class="books__header--color">
+        ${lastElement}</span>`
+}
 
+const sendCategory = (categoryName) => {
+    
     changeCategoryColor(categoryName)
 
     let categorySelected;
@@ -23,11 +33,7 @@ const sendCategory = (categoryName) => {
             return showTopBooks(category.data)
         })
     } else {
-        categorySelected = `category?category=${categoryName.innerHTML}`;
-        getBooksApi(categorySelected)
-        .then (category => {
-            return showCategory(category)
-        })
+        return pageCategory(categoryName.innerHTML)
     }
 }
 
@@ -49,16 +55,37 @@ const allCategory = (categoryName) => {
     
     boxCategories.addEventListener("click", () => sendCategory(event.target))
 }
+const pageCategory = (categoryName) => {
+
+    for (const element of boxCategories.children){
+        if (element.innerHTML === categoryName) {
+            changeCategoryColor(element)
+        }
+    }
+
+    categorySelected = `category?category=${categoryName}`;
+    getBooksApi(categorySelected)
+    .then (category => {
+        return showCategory(category)
+    })
+}
 
 const showCategory = (category) => {
+
+    changeTitleColor(category.data[0].list_name)
+
     itemCategory.innerHTML = ""
     category.data.forEach(element => {
         const book = document.createElement("li")
         itemCategory.append(book)
         book.innerHTML = `
-            <img src="${element.book_image}">
-            ${element.title}
-            `
+        <div class='books__list--card'><img src="${element.book_image}" class='books__list--image'/>
+        <div class='books__list--description'>
+        <span class='books__list--title'>${element.title}</span>
+        <br/>
+        <span class='books__list--author'>${element.author}</span>
+        </div>
+        </div>`;
     })
 }
 
@@ -66,6 +93,9 @@ sendCategory(boxCategories.firstElementChild)
 
 
 const showTopBooks = TopBooks => {
+
+    changeTitleColor("Best Sellers Books")
+
     itemCategory.innerHTML = ""
     TopBooks.map(book => {
         itemCategory.insertAdjacentHTML(
@@ -79,9 +109,17 @@ const showTopBooks = TopBooks => {
                     <span class='books__list--author'>${book.books[0].author}</span>
                 </div>
                 <div class='books__list--see-more'>
-                    <button>see more</button> 
+                    <button onclick="window.location.href='#gototitle'" class="see-more-btn">see more</button>
                 </div>
             </div>`,
         );
     });
 };
+
+document.addEventListener('click', function (event) {
+    const target = event.target.closest('.see-more-btn');
+    if (target) {
+        const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
+        pageCategory(myCategory)
+    }
+});
