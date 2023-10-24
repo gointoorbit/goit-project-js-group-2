@@ -1,28 +1,16 @@
 <!-- mobile-menu window -->
 
-<div class="mobile-menu js-menu-container" id="mobile-menu">
-  <div class="mobile-menu__header">
-    <svg class="logo logo--mobile" width="40" height="37">
-      <use href="./images/icons.svg#icon-logo"></use>
-    </svg>
-    <span>Bookshelf</span
-    ><button class="mobile-toggle js-close-menu">
-      <svg class="mobile-toggle__icon" width="28" height="28">
-        <use href="./images/icons.svg#icon-x-close"></use>
-      </svg>
-    </button>
-  </div>
-
+<div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu__wrapper">
     <p class="mobile-menu__user">User Name</p>
     <div class="mobile-menu__center">
-      <button class="mobile-menu__link-home">Home</button>
-      <p class="mobile-menu__link-text">
+      <a class="mobile-menu__link-home" href="./index.html">Home</a>
+      <a class="mobile-menu__link-text" href="./shopping-list.html">
         Shopping list
         <svg class="mobile-menu__icon-cart" width="20" height="20">
           <use href="./images/icons.svg#icon-cart"></use>
         </svg>
-      </p>
+      </a>
     </div>
     <div class="mobile-logout">
       <button class="log-out-btn">
