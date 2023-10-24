@@ -27,7 +27,14 @@
     <include src="./partials/mobile-menu.html"></include>
 
     <main>
-      <include src="./partials/shopping-list-content.html"></include>
+      <div class="container shopping-list-wrapper">
+        <div class="support-wrapper">
+          <include src="./partials/support.html"></include>
+        </div>
+        <div class="cart-list-wrapper">
+          <include src="./partials/shopping-list-content.html"></include>
+        </div>
+      </div>
     </main>
 
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
