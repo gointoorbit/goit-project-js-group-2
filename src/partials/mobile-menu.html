@@ -15,17 +15,28 @@
 
   <div class="mobile-menu__wrapper">
     <p class="mobile-menu__user">User Name</p>
-    <div class="mobile-menu__center">
-      <button class="mobile-menu__link-home">Home</button>
-      <p class="mobile-menu__link-text">
-        Shopping list
-        <svg class="mobile-menu__icon-cart" width="20" height="20">
-          <use href="./images/icons.svg#icon-cart"></use>
-        </svg>
-      </p>
-    </div>
-    <div class="mobile-logout">
-      <button class="log-out-btn">
+    <nav class="navigation--mobile-menu">
+      <ul class="navigation--mobile-menu__list">
+        <li class="navigation--mobile-menu__item">
+          <a
+            class="navigation--mobile-menu__link navigation--mobile-menu__link--home navigation--mobile-menu__link--current"
+            href="./index.html"
+            >HOME</a
+          >
+        </li>
+        <li class="navigation--mobile-menu__item">
+          <a
+            class="navigation--mobile-menu__link navigation--mobile-menu__link--shopping-list"
+            href="./shopping-list.html"
+            >SHOPPING LIST<svg class="navigation--mobile-menu__icon" width="20" height="20">
+              <use href="./images/icons.svg#icon-cart"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="mobile-menu__logout">
+      <button class="log-out-btn btn-logout">
         <span>Log out</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
