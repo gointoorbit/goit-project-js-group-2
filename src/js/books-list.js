@@ -22,7 +22,7 @@ const changeTitleColor = (element) => {
 }
 
 const sendCategory = (categoryName) => {
-
+    
     changeCategoryColor(categoryName)
 
     let categorySelected;
@@ -56,6 +56,13 @@ const allCategory = (categoryName) => {
     boxCategories.addEventListener("click", () => sendCategory(event.target))
 }
 const pageCategory = (categoryName) => {
+
+    for (const element of boxCategories.children){
+        if (element.innerHTML === categoryName) {
+            changeCategoryColor(element)
+        }
+    }
+
     categorySelected = `category?category=${categoryName}`;
     getBooksApi(categorySelected)
     .then (category => {
@@ -102,15 +109,15 @@ const showTopBooks = TopBooks => {
                     <span class='books__list--author'>${book.books[0].author}</span>
                 </div>
                 <div class='books__list--see-more'>
-                    <button class="see-more-btn">see more</button> 
+                    <button onclick="window.location.href='#gototitle'" class="see-more-btn">see more</button>
                 </div>
             </div>`,
         );
     });
 };
 
-document.addEventListener('click', function (e) {
-    const target = e.target.closest('.see-more-btn');
+document.addEventListener('click', function (event) {
+    const target = event.target.closest('.see-more-btn');
     if (target) {
         const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
         pageCategory(myCategory)
