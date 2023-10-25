@@ -19,25 +19,8 @@ const changeTitleColor = element => {
   categoryTitle.innerHTML = `${titleShort} 
         <span class="books__header--color">
 
-        ${lastElement}</span>`
-}
-
-const sendCategory = (categoryName) => {
-    
-    changeCategoryColor(categoryName)
-
-    let categorySelected;
-    if (categoryName.innerHTML === "All categories") {
-        categorySelected = topBooks
-        getBooksApi(categorySelected)
-        .then (category => {
-            return showTopBooks(category.data)
-        })
-    } else {
-        return pageCategory(categoryName.innerHTML)
-    }
-}
-
+        ${lastElement}</span>`;
+};
 
 const sendCategory = categoryName => {
   changeCategoryColor(categoryName);
@@ -46,32 +29,15 @@ const sendCategory = categoryName => {
   if (categoryName.innerHTML === 'All categories') {
     categorySelected = topBooks;
     getBooksApi(categorySelected).then(category => {
+      console.log(category.data);
       return showTopBooks(category.data);
     });
-
   } else {
     return pageCategory(categoryName.innerHTML);
   }
 };
 
-    
-    boxCategories.addEventListener("click", () => sendCategory(event.target))
-}
-const pageCategory = (categoryName) => {
-
-    for (const element of boxCategories.children){
-        if (element.innerHTML === categoryName) {
-            changeCategoryColor(element)
-        }
-    }
-
-    categorySelected = `category?category=${categoryName}`;
-    getBooksApi(categorySelected)
-    .then (category => {
-        return showCategory(category)
-    })
-}
-
+boxCategories.addEventListener('click', () => sendCategory(event.target));
 
 getBooksApi(categoryList)
   .then(categories => {
@@ -118,75 +84,54 @@ const showCategory = category => {
 
 sendCategory(boxCategories.firstElementChild);
 
-const showTopBooks = TopBooks => {
+// const showTopBooks = TopBooks => {
+//   changeTitleColor('Best Sellers Books');
+
+//   itemCategory.innerHTML = '';
+//   TopBooks.map(book => {
+//     itemCategory.insertAdjacentHTML(
+//       'beforeend',
+//       `
+//             <div class='books__list--card'>
+//                 <span class='books__list--category'>${book.list_name}</span>
+//                 <ul class='books__list--elements'>
+//                 <div class='books__list--element-info'>
+//                    <img src='${book.books[0].book_image}' class='books__list--image'/>
+//                    <div class='books__list--description'>
+//                        <span class='books__list--title'>${book.books[0].title}</span>
+//                        <br/>
+//                        <span class='books__list--author'>${book.books[0].author}</span>
+//                   </div>
+//                 </div>`,
+//     );
+//   });
+
+const showTopBooks = topBooks => {
   changeTitleColor('Best Sellers Books');
 
   itemCategory.innerHTML = '';
-  TopBooks.map(book => {
-    itemCategory.insertAdjacentHTML(
+  for (const category of topBooks) {
+    const categoryCard = document.createElement('div');
+    const booksList = document.querySelector('.books__list');
+    booksList.append(categoryCard);
+    categoryCard.classList.add('books__list--category');
+    categoryCard.insertAdjacentHTML(
       'beforeend',
-      `
-            <div class='books__list--card'>
-                <span class='books__list--category'>${book.list_name}</span>
-                <ul class='books__list--elements'>
-                <div class='books__list--element-info'>
-                   <img src='${book.books[0].book_image}' class='books__list--image'/>
-                   <div class='books__list--description'>
-                       <span class='books__list--title'>${book.books[0].title}</span>
-                       <br/>
-                       <span class='books__list--author'>${book.books[0].author}</span>
-                  </div>
-                </div>
-                <div class='books__list--element-info'>
-                   <img src='${book.books[1].book_image}' class='books__list--image'/>
-                   <div class='books__list--description'>
-                       <span class='books__list--title'>${book.books[1].title}</span>
-                       <br/>
-                       <span class='books__list--author'>${book.books[1].author}</span>
-                  </div>
-                </div>
-                <div class='books__list--element-info'>
-                   <img src='${book.books[2].book_image}' class='books__list--image'/>
-                   <div class='books__list--description'>
-                       <span class='books__list--title'>${book.books[2].title}</span>
-                       <br/>
-                       <span class='books__list--author'>${book.books[2].author}</span>
-                  </div>
-                </div>
-                <div class='books__list--element-info'>
-                   <img src='${book.books[3].book_image}' class='books__list--image'/>
-                   <div class='books__list--description'>
-                       <span class='books__list--title'>${book.books[3].title}</span>
-                       <br/>
-                       <span class='books__list--author'>${book.books[3].author}</span>
-                  </div>
-                </div>
-                <div class='books__list--element-info'>
-                   <img src='${book.books[4].book_image}' class='books__list--image'/>
-                   <div class='books__list--description'>
-                       <span class='books__list--title'>${book.books[4].title}</span>
-                       <br/>
-                       <span class='books__list--author'>${book.books[4].author}</span>
-                  </div>
-                </div>
-                </ul>
-                <div class='books__list--see-more'>
-                    <button onclick="window.location.href='#gototitle'" class="see-more-btn">see more</button>
-                </div>
-            </div>`,
+      `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul>`,
     );
-  });
+    console.log(categoryCard);
 
-  //   <img src='${book.books[0].book_image}' class='books__list--image'/>
-  //   <div class='books__list--description'>
-  //       <span class='books__list--title'>${book.books[0].title}</span>
-  //       <br/>
-  //       <span class='books__list--author'>${book.books[0].author}</span>
-  //  </div>
-
-  console.log(TopBooks);
+    console.log(category.list_name);
+    for (const book of category.books) {
+      let booksOfCategory = document.querySelectorAll('.books__list--category-set');
+      console.log(book);
+      booksOfCategory[booksOfCategory.length - 1].insertAdjacentHTML(
+        'beforeend',
+        `<li class="books__list--element-info"><img src="${book.book_image}"/><div class="books__list--element-description"><span class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
+      );
+    }
+  }
 };
-
 
 document.addEventListener('click', function (e) {
   const target = e.target.closest('.see-more-btn');
@@ -195,4 +140,3 @@ document.addEventListener('click', function (e) {
     pageCategory(myCategory);
   }
 });
-
