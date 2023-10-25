@@ -55,56 +55,92 @@ html {
       width: 335px;
     }
   }
-  &--elements {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    @include tablet {
-      flex-direction: row;
-    }
-  }
 
-  &--image {
-    padding-top: 18px;
-    border-radius: 8px;
-    max-width: 385px;
-    max-height: 485px;
-    @include desktop {
-      width: 180px;
-      height: 256px;
-    }
-  }
-  &--description {
-    padding-top: 14px;
-    gap: 4px;
-  }
-  &--see-more {
-    padding-top: 8px;
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 40px;
-  }
-  &--title {
+  &__header {
     color: var(--color-header-border);
     font-family: DM Sans;
-    font-size: 16px;
+    font-size: 32px;
     font-style: normal;
     font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.64px;
-    text-transform: uppercase;
+    line-height: 32px;
+    letter-spacing: -1.28px;
+    &--color {
+      color: var(--color-purple-btn);
+    }
   }
-  &--author {
-    color: var(--color-author-font);
-    font-family: DM Sans;
-    font-size: 12px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.48px;
+  &__list {
+    &--category {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--category-name {
+      color: var(--color-author-font);
+      font-family: DM Sans;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: 0.42px;
+      text-transform: uppercase;
+    }
+
+    &--category-set {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      @include tablet {
+        flex-direction: row;
+      }
+    }
+
+    &--category-see-more {
+      padding-top: 8px;
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 40px;
+    }
+
+    &--image {
+      padding-top: 18px;
+      border-radius: 8px;
+      max-width: 385px;
+      max-height: 485px;
+      @include tablet {
+        width: 218px;
+        height: 316px;
+      }
+      @include desktop {
+        width: 180px;
+        height: 256px;
+      }
+    }
+    &--description {
+      padding-top: 14px;
+      gap: 4px;
+    }
+
+    &--title {
+      color: var(--color-header-border);
+      font-family: DM Sans;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.64px;
+      text-transform: uppercase;
+    }
+    &--author {
+      color: var(--color-author-font);
+      font-family: DM Sans;
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.48px;
+    }
   }
 }
-
 .change-category-color {
   color: var(--color-selected-category);
   text-transform: uppercase;

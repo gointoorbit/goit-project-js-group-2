@@ -84,28 +84,6 @@ const showCategory = category => {
 
 sendCategory(boxCategories.firstElementChild);
 
-// const showTopBooks = TopBooks => {
-//   changeTitleColor('Best Sellers Books');
-
-//   itemCategory.innerHTML = '';
-//   TopBooks.map(book => {
-//     itemCategory.insertAdjacentHTML(
-//       'beforeend',
-//       `
-//             <div class='books__list--card'>
-//                 <span class='books__list--category'>${book.list_name}</span>
-//                 <ul class='books__list--elements'>
-//                 <div class='books__list--element-info'>
-//                    <img src='${book.books[0].book_image}' class='books__list--image'/>
-//                    <div class='books__list--description'>
-//                        <span class='books__list--title'>${book.books[0].title}</span>
-//                        <br/>
-//                        <span class='books__list--author'>${book.books[0].author}</span>
-//                   </div>
-//                 </div>`,
-//     );
-//   });
-
 const showTopBooks = topBooks => {
   changeTitleColor('Best Sellers Books');
 
@@ -117,7 +95,7 @@ const showTopBooks = topBooks => {
     categoryCard.classList.add('books__list--category');
     categoryCard.insertAdjacentHTML(
       'beforeend',
-      `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul>`,
+      `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul><div class'books__list--category-see-more'><button class='see-more-btn'>see more</button></div>`,
     );
     console.log(categoryCard);
 
@@ -127,7 +105,7 @@ const showTopBooks = topBooks => {
       console.log(book);
       booksOfCategory[booksOfCategory.length - 1].insertAdjacentHTML(
         'beforeend',
-        `<li class="books__list--element-info"><img src="${book.book_image}"/><div class="books__list--element-description"><span class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
+        `<li class="books__list--element-info"><img data-mainId='${book._id}' class='books__list--image' src="${book.book_image}"/><div class="books__list--element-description"><span data-mainId='${book._id}' class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
       );
     }
   }
@@ -138,5 +116,18 @@ document.addEventListener('click', function (e) {
   if (target) {
     const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
     pageCategory(myCategory);
+  }
+});
+
+const booksSection = document.querySelector('.books__list');
+
+booksSection.addEventListener('click', event => {
+  if (
+    event.target.classList.contains('books__list--image') ||
+    event.target.classList.contains('books__list--title')
+  ) {
+    const selectedId = event.target.dataset.mainid;
+    console.log(selectedId);
+    //Tutaj dodać funkcje pobierania danych z api i tworzenia modala
   }
 });
