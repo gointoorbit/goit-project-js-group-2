@@ -1,5 +1,7 @@
 import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
+import amazonIcon from '/src/images/amazon-light-mode.svg';
+import appleBooksIcon from '/src/images/apple-books.svg';
 
 // Simulation of adding books to Shopping List (Local Storage) //
 // It will be deleted when adding books Ids to Local Storage from main page will work //
@@ -57,7 +59,7 @@ const showMyBook = myBook => {
                       class="shops-list__link"
                       ><div class="shops-list__icon-box shops-list__icon-box--amazon">
                         <img
-                          src="./images/amazon-light-mode.svg"
+                          src="${amazonIcon}"
                           alt="Amazon logo"
                           class="shops-list__icon-img-amazon"
                         /></div
@@ -71,7 +73,7 @@ const showMyBook = myBook => {
                       class="shops-list__link"
                       ><div class="shops-list__icon-box shops-list__icon-box--apple">
                         <img
-                          src="./images/apple-books.svg"
+                          src="${appleBooksIcon}"
                           alt="Apple Books logo"
                           class="shops-list__icon-img-apple"
                         /></div

@@ -1,44 +1,45 @@
 :root {
-    // LIGHT MODE
-    --color-background: #F6F6F6;
-    --color-header: #FFF;
-    --color-header-border: #111;
-    --color-list-category: #11111199;
-    --color-selected-category: #4F2EE8;
-    --color-slider: #E0E0E0;
-    --color-main-font: #111;
-    --color-info-empty: #00000099;
-    --color-brand-name: #000;
-    --amazon-icon-filter: grayscale(100%);
-    --amazon-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.3));
-    --apple-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.3));
+  // LIGHT MODE
+  --color-background: #f6f6f6;
+  --color-header: #fff;
+  --color-header-border: #111;
+  --color-list-category: #11111199;
+  --color-selected-category: #4f2ee8;
+  --color-slider: #e0e0e0;
+  --color-main-font: #111;
+  --color-info-empty: #00000099;
+  --color-brand-name: #000;
+  --amazon-icon-filter: grayscale(100%);
+  --amazon-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
+  --apple-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.2));
 
-    // CONST COLOR
-    --color-purple-btn: #4F2EE8;
-    --color-yellow-btn: #EAC645;
-    --color-black-btn: #111;
-    --color-white-btn: #fff;
-    --color-purple-title: #4F2EE8;
-    --color-author-font: #B4AFAF;
-    --color-shoping-border: #4F2EE866;
-    --color-modal-background: #11111166;
-    --color-purple-support: #4f2ee8;
-    --color-white-support: #fff;
-    --color-user-icon: #F6F6F6;
+  // CONST COLOR
+  --color-purple-btn: #4f2ee8;
+  --color-yellow-btn: #eac645;
+  --color-black-btn: #111;
+  --color-white-btn: #fff;
+  --color-purple-title: #4f2ee8;
+  --color-author-font: #b4afaf;
+  --color-shoping-border: #4f2ee866;
+  --color-modal-background: #11111166;
+  --color-purple-support: #4f2ee8;
+  --color-white-support: #fff;
+  --color-user-icon: #f6f6f6;
 }
 
 .darkmode {
-    // DARK MODE
-    --color-background: #202024;
-    --color-header: #111;
-    --color-header-border: #FFF;
-    --color-list-category: #FFFFFF99;
-    --color-selected-category: #EAC645;
-    --color-slider: #11111199;
-    --color-main-font: #FFF;
-    --color-info-empty: #ffffff99;
-    --color-brand-name: #f3f3f3;
-    --amazon-icon-filter: grayscale(100%) invert(100%);
-    --amazon-icon-filter-focus: grayscale(100%) invert(100%) drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.3));
-    --apple-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.3));
+  // DARK MODE
+  --color-background: #202024;
+  --color-header: #111;
+  --color-header-border: #fff;
+  --color-list-category: #ffffff99;
+  --color-selected-category: #eac645;
+  --color-slider: #11111199;
+  --color-main-font: #fff;
+  --color-info-empty: #ffffff99;
+  --color-brand-name: #f3f3f3;
+  --amazon-icon-filter: grayscale(100%) invert(100%);
+  --amazon-icon-filter-focus: grayscale(100%) invert(100%)
+    drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.2));
+  --apple-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.2));
 }

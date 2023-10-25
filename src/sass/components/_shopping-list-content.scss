@@ -1,3 +1,12 @@
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .shopping-content {
   background-color: var(--color-background);
 }
@@ -6,16 +15,19 @@
   color: var(--color-main-font);
   // padding-top: 40px;
   margin-bottom: 40px;
+  width: 335px;
   @include font(32px, 700, -1.28px, 1.1875);
   &__accent {
     color: var(--color-purple-title);
   }
   @include tablet {
     @include font(48px, 700, -1.92px, 1.0833);
+    width: 704px;
   }
 }
 
 .shopping-empty {
+  animation: show 0.25s ease-in-out;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,6 +43,7 @@
     color: var(--color-info-empty);
     text-align: center;
     width: calc(100% - 21px);
+    padding: 0 5px;
     @include font(14px, 400, -0.28px, 1.2857);
     @include tablet {
       @include font(18px, 400, -0.36px, 1.3333);
@@ -40,6 +53,7 @@
 }
 
 .card-item {
+  animation: show 0.25s ease-in-out;
   &__box {
     position: relative;
     margin: 0 auto 20px;
@@ -231,15 +245,17 @@
     }
   }
   &__icon-img-apple {
-    content: url('../images/apple-books.svg');
     filter: grayscale(100%);
     transform: scale(1);
     @include animation(transform);
   }
   &__icon-img-amazon {
-    content: url('../images/amazon-light-mode.svg');
     filter: var(--amazon-icon-filter);
-    transform: scale(1.1);
+    transform: scale(1);
     @include animation(transform);
   }
+}
+
+body {
+  overflow-y: scroll;
 }
