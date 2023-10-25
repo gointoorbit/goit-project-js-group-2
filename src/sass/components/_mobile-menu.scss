@@ -12,6 +12,7 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
   transform: translateX(100%);
   z-index: 10;
   margin-top: 64px;
+
   @include tablet {
     margin-top: 72px;
   }
@@ -82,9 +83,20 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
 }
 
 .log-out-btn.btn-logout {
-  position: absolute;
-  bottom: 80px;
-  left: 20px;
+  cursor: pointer;
+  align-items: center;
+  gap: 4px;
+  height: 48px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  position: fixed;
+  bottom: 20px;
 }
 
 .hidden {

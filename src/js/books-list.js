@@ -19,25 +19,8 @@ const changeTitleColor = element => {
   categoryTitle.innerHTML = `${titleShort} 
         <span class="books__header--color">
 
-        ${lastElement}</span>`
-}
-
-const sendCategory = (categoryName) => {
-    
-    changeCategoryColor(categoryName)
-
-    let categorySelected;
-    if (categoryName.innerHTML === "All categories") {
-        categorySelected = topBooks
-        getBooksApi(categorySelected)
-        .then (category => {
-            return showTopBooks(category.data)
-        })
-    } else {
-        return pageCategory(categoryName.innerHTML)
-    }
-}
-
+        ${lastElement}</span>`;
+};
 
 const sendCategory = categoryName => {
   changeCategoryColor(categoryName);
@@ -48,30 +31,38 @@ const sendCategory = categoryName => {
     getBooksApi(categorySelected).then(category => {
       return showTopBooks(category.data);
     });
-
   } else {
     return pageCategory(categoryName.innerHTML);
   }
 };
 
-    
-    boxCategories.addEventListener("click", () => sendCategory(event.target))
-}
-const pageCategory = (categoryName) => {
+const sendCategory = categoryName => {
+  changeCategoryColor(categoryName);
 
-    for (const element of boxCategories.children){
-        if (element.innerHTML === categoryName) {
-            changeCategoryColor(element)
-        }
+  let categorySelected;
+  if (categoryName.innerHTML === 'All categories') {
+    categorySelected = topBooks;
+    getBooksApi(categorySelected).then(category => {
+      return showTopBooks(category.data);
+    });
+  } else {
+    return pageCategory(categoryName.innerHTML);
+  }
+};
+
+boxCategories.addEventListener('click', () => sendCategory(event.target));
+const pageCategory = categoryName => {
+  for (const element of boxCategories.children) {
+    if (element.innerHTML === categoryName) {
+      changeCategoryColor(element);
     }
+  }
 
-    categorySelected = `category?category=${categoryName}`;
-    getBooksApi(categorySelected)
-    .then (category => {
-        return showCategory(category)
-    })
-}
-
+  categorySelected = `category?category=${categoryName}`;
+  getBooksApi(categorySelected).then(category => {
+    return showCategory(category);
+  });
+};
 
 getBooksApi(categoryList)
   .then(categories => {
@@ -187,7 +178,6 @@ const showTopBooks = TopBooks => {
   console.log(TopBooks);
 };
 
-
 document.addEventListener('click', function (e) {
   const target = e.target.closest('.see-more-btn');
   if (target) {
@@ -195,4 +185,3 @@ document.addEventListener('click', function (e) {
     pageCategory(myCategory);
   }
 });
-
