@@ -109,7 +109,7 @@ const sliderButton = document.querySelector('.slider__button');
 const itemsSupport = document.querySelectorAll('.support__link');
 let itemsCount = itemsSupport.length;
 const sliderItemHeight = 32;
-const movePosition = slidesToScroll * sliderItemHeight;
+const movePosition = slidesToShow * sliderItemHeight;
 
 itemsSupport.forEach(item => {
   item.style.minHeight = `${sliderItemHeight}px`;
@@ -151,69 +151,6 @@ function getItemsBottom() {
   } else {
     return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 55;
   }
-
-  
+}
 
  
-  let position = 0;
-  let slidesToShow = 6;
-  let slidesToScroll = 1;
-  
-  const container = document.querySelector('.slider__container');
-  const list = document.querySelector('.support__list');
-  const sliderButton = document.querySelector('.slider__button');
-  const itemsSupport = document.querySelectorAll('.support__link');
-  const turnButton = document.querySelector('.support__button-svg');
-  let itemsCount = itemsSupport.length;
-  const sliderItemHeight = 32;
-  const movePosition = slidesToShow * sliderItemHeight;
-  
-  itemsSupport.forEach((item) => {
-    item.style.minHeight = `${sliderItemHeight}px`;
-  });
-  
-  let turnUpButton = () => {
-document.querySelector('#btn').classList.add('active');
-  };
-  
-
-  sliderButton.addEventListener('click', () => {
-    const itemsBottom = getItemsBottom();
-  
-    if (itemsBottom >= slidesToScroll) {
-      position -= movePosition;
-      } else {
-    position = 0
-   
-    }
-    turnButton.addEventListener('click', turnUpButton);
-    
-    list.style.transition = 'transform 0.3s ease-out';
-    setPosition();
-  
-    setTimeout(() => {
-      list.style.transition = '';
-    }, 300);
-  });
-  
-  window.addEventListener('resize', () => {
-    itemsCount = itemsSupport.length;
-    setPosition();
-  });
-  
-  const setPosition = () => {
-    list.style.transform = `translateY(${position}px)`;
-  };
-  
-  function getItemsBottom() {
-    const windowWidth = window.innerWidth;
-  
-    if (windowWidth >= 1440) {
-      return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 39;
-    } else if (windowWidth >= 768) {
-      return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 40;
-    } else {
-      return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 50;
-    }
-  }
-
