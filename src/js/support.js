@@ -8,51 +8,63 @@ import support7 from '/src/images/images-support/support7.svg';
 import support8 from '/src/images/images-support/support8.svg';
 import support9 from '/src/images/images-support/support9.svg';
 
+
 const supportArray = [
     {
       title: 'Save the Children',
       url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis',
       img: support1,
+      id: 1,
+       
     },
     {
       title: 'Project HOPE',
       url: 'https://www.projecthope.org/country/ukraine/',
       img: support2,
+      id: 2,
     },
     {
       title: 'International Medical Corps',
       url: 'https://internationalmedicalcorps.org/country/ukraine/',
       img: support3,
+      id: 3,
     },
     {
       title: 'RAZOM',
       url: 'https://www.razomforukraine.org/',
       img: support4,
+      id: 4,
     },
     {
       title: 'Action against hunger',
       url: 'https://www.actionagainsthunger.org/location/europe/ukraine/',
       img: support5,
+      id: 5,
     },
     {
       title: 'Serhiy Prytula Charity Foundation',
       url: 'https://prytulafoundation.org/en',
       img: support6,
-    },
-    {
-      title: 'UNITED24',
-      url: 'https://u24.gov.ua/uk',
-      img: support7,
+      id: 6,
     },
     {
       title: 'Medecins Sans Frontieres',
       url: 'https://www.msf.org/ukraine',
-      img: support8,
+      img: support7,
+      id: 7,
     },
     {
       title: 'World vision',
       url: 'https://www.wvi.org/emergencies/ukraine',
+      img: support8,
+      id: 8,
+    },
+    {
+   
+      title: 'UNITED24',
+      url: 'https://u24.gov.ua/uk',
       img: support9,
+      id: 9,
     },
 ]
   
@@ -64,15 +76,15 @@ const supportArray = [
   supportList.addEventListener('click', onClick);
   
   function createImageCardMarkup(supportArray) {
-  
+ 
     return supportArray
-      .map(({ title, url, img }) => {
+      .map(({ title, url, img, id, }) => {
        
         return `<li class="support__link js-support">
-          <a class="js-target" href="${url}" target="_blank">
+          <a class="js-target" href="${url}" target="_blank" id="${id}">
             <span class="support__number">
             <img class="support__img"
-            src="${img}" alt="${title}"/></span>
+            src="${img}" alt="${title}" /></span>
           </a>
         </li>`;
       })
@@ -86,7 +98,7 @@ const supportArray = [
   }
   
 
-  
+ 
   let position = 0;
   let slidesToShow = 6;
   let slidesToScroll = 1;
@@ -95,25 +107,31 @@ const supportArray = [
   const list = document.querySelector('.support__list');
   const sliderButton = document.querySelector('.slider__button');
   const itemsSupport = document.querySelectorAll('.support__link');
+  const turnButton = document.querySelector('.support__button-svg');
   let itemsCount = itemsSupport.length;
   const sliderItemHeight = 32;
-  const movePosition = slidesToScroll * sliderItemHeight;
+  const movePosition = slidesToShow * sliderItemHeight;
   
   itemsSupport.forEach((item) => {
     item.style.minHeight = `${sliderItemHeight}px`;
   });
   
-
+  let turnUpButton = () => {
+document.querySelector('#btn').classList.add('active');
+  };
+  
 
   sliderButton.addEventListener('click', () => {
     const itemsBottom = getItemsBottom();
   
     if (itemsBottom >= slidesToScroll) {
       position -= movePosition;
-    } else {
-      position = 0;
+      } else {
+    position = 0
+   
     }
-  
+    turnButton.addEventListener('click', turnUpButton);
+    
     list.style.transition = 'transform 0.3s ease-out';
     setPosition();
   
@@ -139,6 +157,6 @@ const supportArray = [
     } else if (windowWidth >= 768) {
       return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 40;
     } else {
-      return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 55;
+      return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 50;
     }
   }

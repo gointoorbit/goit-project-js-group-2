@@ -11,10 +11,10 @@
     background: radial-gradient(183.6% 183.01% at 59.76% -23.42%, var(--color-purple-support) 18.03%, var(--color-white-support) 100%);
     box-shadow: 0px 10px 10px rgba(245, 245, 247, 0.1);
     border-radius: 16px;
+    
   }
-  .aga{
-    fill: white;
-  }
+  
+
   
   @media screen and (min-width:428px) {
     .support__box{
@@ -50,11 +50,18 @@
     line-height: 1.2;
     letter-spacing: -0.04em;
     padding-bottom: 40px;
+    background-color: inherit;
+  }
+  @media screen and (min-width:428px) {
+    .support__title {
+padding-bottom: 24px;
+
+    }
   }
   
   .support__list {
     padding-left: 40px;
-    
+    // position: absolute;
   }
   
   .support__button {
@@ -113,8 +120,10 @@
     height: 20px;
     rotate: 180deg;
   }
-  
-  
+  .active {
+    rotate: 180deg;
+  }
+
   
   
   @media screen and (min-width: 428px){
@@ -142,12 +151,13 @@
   .support__svg {
     fill: var(--color-white-support);
     margin-left: 12px;
-    max-width: 30px;
+    max-width: 20px;
+    max-height: 32px;
   }
   
   .support__img {
     fill: var(--color-white-support);
-    margin-left: 16px;
+    // margin-left: 20px;
   
   
     filter: brightness(0) invert(1); 
