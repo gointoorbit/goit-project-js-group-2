@@ -1,26 +1,28 @@
-<div class="container shopping-content">
-  <h1 class="shopping-title">Shopping <span class="shopping-title__accent">List</span></h1>
-  <div class="shopping-empty">
-    <p class="shopping-empty__text">This page is empty, add some books and proceed to order.</p>
-    <picture class="shopping-empty__img">
-      <source
-        media="(min-width: 768px)"
-        srcset="
-          ./images/shopping_list_books-tablet.png     1x,
-          ./images/shopping_list_books-tablet.@2x.png 2x
-        "
-      />
-      <source
-        media="(max-width: 767px)"
-        srcset="./images/shopping_list_books.png 1x, ./images/shopping_list_books.@2x.png 2x"
-      />
-      <img
-        src="./images/shopping_list_books.png"
-        alt="Empty shopping list placeholder. Pile of books."
-      />
-    </picture>
+<section class="shopping">
+  <div class="shopping-content">
+    <h1 class="shopping-title">Shopping <span class="shopping-title__accent">List</span></h1>
+    <div class="shopping-empty">
+      <p class="shopping-empty__text">This page is empty, add some books and proceed to order.</p>
+      <picture class="shopping-empty__img">
+        <source
+          media="(min-width: 768px)"
+          srcset="
+            ./images/shopping_list_books-tablet.png     1x,
+            ./images/shopping_list_books-tablet.@2x.png 2x
+          "
+        />
+        <source
+          media="(max-width: 767px)"
+          srcset="./images/shopping_list_books.png 1x, ./images/shopping_list_books.@2x.png 2x"
+        />
+        <img
+          src="./images/shopping_list_books.png"
+          alt="Empty shopping list placeholder. Pile of books."
+        />
+      </picture>
+    </div>
+    <div class="shopping-list">
+      <ul class="cards-list"></ul>
+    </div>
   </div>
-  <div class="shopping-list">
-    <ul class="cards-list"></ul>
-  </div>
-</div>
+</section>

@@ -10,6 +10,7 @@ import support9 from '/src/images/images-support/support9.svg';
 
 
 const supportArray = [
+
     {
       title: 'Save the Children',
       url: 'https://www.savethechildren.net/what-we-do/emergencies/ukraine-crisis',
@@ -82,20 +83,75 @@ const supportArray = [
        
         return `<li class="support__link js-support">
           <a class="js-target" href="${url}" target="_blank" id="${id}">
+
             <span class="support__number">
             <img class="support__img"
             src="${img}" alt="${title}" /></span>
           </a>
         </li>`;
-      })
-      .join('');
+    })
+    .join('');
+}
+
+function onClick(evt) {
+  if (!evt.target.classList.contains('js-support')) {
+    return;
   }
-  
-  function onClick(evt) {
-    if (!evt.target.classList.contains('js-support')) {
-      return;
-    }
+}
+
+let position = 0;
+let slidesToShow = 6;
+let slidesToScroll = 1;
+
+const container = document.querySelector('.slider__container');
+const list = document.querySelector('.support__list');
+const sliderButton = document.querySelector('.slider__button');
+const itemsSupport = document.querySelectorAll('.support__link');
+let itemsCount = itemsSupport.length;
+const sliderItemHeight = 32;
+const movePosition = slidesToScroll * sliderItemHeight;
+
+itemsSupport.forEach(item => {
+  item.style.minHeight = `${sliderItemHeight}px`;
+});
+
+sliderButton.addEventListener('click', () => {
+  const itemsBottom = getItemsBottom();
+
+  if (itemsBottom >= slidesToScroll) {
+    position -= movePosition;
+  } else {
+    position = 0;
   }
+
+  list.style.transition = 'transform 0.3s ease-out';
+  setPosition();
+
+  setTimeout(() => {
+    list.style.transition = '';
+  }, 300);
+});
+
+window.addEventListener('resize', () => {
+  itemsCount = itemsSupport.length;
+  setPosition();
+});
+
+const setPosition = () => {
+  list.style.transform = `translateY(${position}px)`;
+};
+
+function getItemsBottom() {
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth >= 1440) {
+    return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 39;
+  } else if (windowWidth >= 768) {
+    return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 40;
+  } else {
+    return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 55;
+  }
+
   
 
  
@@ -160,3 +216,4 @@ document.querySelector('#btn').classList.add('active');
       return itemsCount - (Math.abs(position) + slidesToShow * sliderItemHeight) / 50;
     }
   }
+

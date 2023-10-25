@@ -22,10 +22,12 @@
   <body>
     <!-- W taki sposbu dodajemy fragmenty w główny HTML-plik strony. -->
     <include src="./partials/header.html"></include>
-    <!-- <include src="./partials/mobile-menu.html"></include> -->
+    <include src="./partials/mobile-menu.html"></include>
     <main>
-      <include src="./partials/categories.html"></include>
-      <include src="./partials/support.html"></include>
+      <div class="elements-location">
+        <include src="./partials/categories.html"></include>
+        <include src="./partials/support.html"></include>
+      </div>
       <include src="./partials/books-list.html"></include>
       <include src="./partials/modal.html"></include>
     </main>
