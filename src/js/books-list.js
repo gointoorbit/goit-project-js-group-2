@@ -1,8 +1,9 @@
 import { getBooksApi, categoryList, topBooks } from './api.js';
 const boxCategories = document.querySelector('.books__categories ul');
-const itemCategory = document.querySelector('.books__list ul');
 const categoryTitle = document.querySelector('.books__header');
+const booksList = document.querySelector('.books__list');
 let lastCategory;
+let categorySelected;
 
 const changeCategoryColor = category => {
   if (lastCategory) {
@@ -25,15 +26,21 @@ const changeTitleColor = element => {
 const sendCategory = categoryName => {
   changeCategoryColor(categoryName);
 
-  let categorySelected;
   if (categoryName.innerHTML === 'All categories') {
     categorySelected = topBooks;
     getBooksApi(categorySelected).then(category => {
       console.log(category.data);
-      return showTopBooks(category.data);
+      console.log(window.screen.width);
+      if (window.screen.width <= 768) {
+        showTopBooks(category.data, 1);
+      } else if (window.screen.width <= 1440) {
+        showTopBooks(category.data, 3);
+      } else {
+        showTopBooks(category.data, 5);
+      }
     });
   } else {
-    return pageCategory(categoryName.innerHTML);
+    pageCategory(categoryName.innerHTML);
   }
 };
 
@@ -67,10 +74,10 @@ const pageCategory = categoryName => {
 const showCategory = category => {
   changeTitleColor(category.data[0].list_name);
 
-  itemCategory.innerHTML = '';
+  booksList.innerHTML = '';
   category.data.forEach(element => {
     const book = document.createElement('li');
-    itemCategory.append(book);
+    booksList.append(book);
     book.innerHTML = `
         <div class='books__list--card'><img src="${element.book_image}" class='books__list--image'/>
         <div class='books__list--description'>
@@ -84,25 +91,26 @@ const showCategory = category => {
 
 sendCategory(boxCategories.firstElementChild);
 
-const showTopBooks = topBooks => {
+const showTopBooks = (topBooks, itemNumbers) => {
   changeTitleColor('Best Sellers Books');
 
-  itemCategory.innerHTML = '';
+  booksList.innerHTML = '';
   for (const category of topBooks) {
     const categoryCard = document.createElement('div');
-    const booksList = document.querySelector('.books__list');
+
     booksList.append(categoryCard);
     categoryCard.classList.add('books__list--category');
     categoryCard.insertAdjacentHTML(
       'beforeend',
       `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul><div class'books__list--category-see-more'><button class='see-more-btn'>see more</button></div>`,
     );
-    console.log(categoryCard);
-
     console.log(category.list_name);
-    for (const book of category.books) {
+    let booksArray = category.books;
+    let adjustedBooksArray = booksArray.slice(0, itemNumbers);
+    console.log(itemNumbers);
+    console.log(adjustedBooksArray);
+    for (const book of adjustedBooksArray) {
       let booksOfCategory = document.querySelectorAll('.books__list--category-set');
-      console.log(book);
       booksOfCategory[booksOfCategory.length - 1].insertAdjacentHTML(
         'beforeend',
         `<li class="books__list--element-info"><img data-mainId='${book._id}' class='books__list--image' src="${book.book_image}"/><div class="books__list--element-description"><span data-mainId='${book._id}' class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
