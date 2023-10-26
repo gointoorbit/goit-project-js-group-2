@@ -5,6 +5,71 @@ import appleBooksIcon from '/src/images/apple-books.svg';
 
 const modalSection = document.querySelector('.modal-card');
 const booksSection = document.querySelector('.books__list');
+let myBooksId = localStorage.load('myBooksId') || [];
+let modalCloseButton = document.querySelector('.modal-card__close-box') || null;
+
+const closeButtonHandler = () => {
+  modalSection.innerHTML = '';
+  modalCloseButton.removeEventListener('click', closeButtonHandler);
+  window.removeEventListener('keydown', escapeKeyHandler);
+  window.removeEventListener('click', backdropClickHandler);
+};
+
+const escapeKeyHandler = event => {
+  if (event.key === 'Escape') {
+    modalSection.innerHTML = '';
+    window.removeEventListener('keydown', escapeKeyHandler);
+    modalCloseButton.removeEventListener('click', closeButtonHandler);
+    window.removeEventListener('click', backdropClickHandler);
+  }
+};
+
+const backdropClickHandler = event => {
+  if (event.target.classList.contains('modal-card__backdrop')) {
+    modalSection.innerHTML = '';
+    window.removeEventListener('click', backdropClickHandler);
+    window.removeEventListener('keydown', escapeKeyHandler);
+    modalCloseButton.removeEventListener('click', closeButtonHandler);
+  }
+};
+
+const toggleShoppingHandler = event => {
+  const idToToggle = event.target.dataset.modalid;
+  myBooksId = localStorage.load('myBooksId') || [];
+  const toggleShoppingButton = document.querySelector('.button-shopping__content');
+  const shoppingCongrats = document.querySelector('.modal-card__congrats');
+  if (myBooksId.indexOf(idToToggle) === -1) {
+    myBooksId.push(idToToggle);
+    localStorage.save('myBooksId', myBooksId);
+    toggleShoppingButton.textContent = 'Remove from the shopping list';
+    shoppingCongrats.style.display = 'inline';
+    return;
+  }
+  if (myBooksId.indexOf(idToToggle) !== -1) {
+    indexToRemove = myBooksId.indexOf(idToToggle);
+    myBooksId.splice(indexToRemove, 1);
+    localStorage.save('myBooksId', myBooksId);
+    toggleShoppingButton.textContent = 'Add to shopping list';
+    shoppingCongrats.style.display = 'none';
+    return;
+  }
+};
+
+const adjustModalCard = id => {
+  const toggleShoppingButton = document.querySelector('.button-shopping__content');
+  const shoppingCongrats = document.querySelector('.modal-card__congrats');
+  myBooksId = localStorage.load('myBooksId') || [];
+  if (myBooksId.indexOf(id) === -1) {
+    toggleShoppingButton.textContent = 'Add to shopping list';
+    shoppingCongrats.style.display = 'none';
+    return;
+  }
+  if (myBooksId.indexOf(id) !== -1) {
+    toggleShoppingButton.textContent = 'Remove from the shopping list';
+    shoppingCongrats.style.display = 'inline';
+    return;
+  }
+};
 
 const showModalCard = myBook => {
   const { _id, book_image, title, description, author, buy_links } = myBook;
@@ -72,10 +137,13 @@ const showModalCard = myBook => {
     </div>
   </div>`;
   modalSection.insertAdjacentHTML('beforeend', markup);
-  const modalCloseButton = document.querySelector('.modal-card__close-box');
-  modalCloseButton.addEventListener('click', () => {
-    modalSection.innerHTML = '';
-  });
+  modalCloseButton = document.querySelector('.modal-card__close-box');
+  modalCloseButton.addEventListener('click', closeButtonHandler);
+  window.addEventListener('keydown', escapeKeyHandler);
+  window.addEventListener('click', backdropClickHandler);
+  adjustModalCard(_id);
+  const toggleShoppingButton = document.querySelector('.button-shopping__content');
+  toggleShoppingButton.addEventListener('click', toggleShoppingHandler);
 };
 
 const renderModalCard = bookID => {
@@ -94,8 +162,7 @@ booksSection.addEventListener('click', event => {
     event.target.classList.contains('books__list--title')
   ) {
     const selectedId = event.target.dataset.mainid;
-    console.log(selectedId);
-    //Tutaj dodać funkcje pobierania danych z api i tworzenia modala
+    modalSection.innerHTML = '';
     renderModalCard(selectedId);
   }
 });

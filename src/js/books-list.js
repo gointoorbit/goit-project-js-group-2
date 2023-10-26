@@ -126,16 +126,3 @@ document.addEventListener('click', function (e) {
     pageCategory(myCategory);
   }
 });
-
-const booksSection = document.querySelector('.books__list');
-
-booksSection.addEventListener('click', event => {
-  if (
-    event.target.classList.contains('books__list--image') ||
-    event.target.classList.contains('books__list--title')
-  ) {
-    const selectedId = event.target.dataset.mainid;
-    console.log(selectedId);
-    //Tutaj dodać funkcje pobierania danych z api i tworzenia modala
-  }
-});
