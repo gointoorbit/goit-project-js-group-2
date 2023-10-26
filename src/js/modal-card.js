@@ -46,7 +46,7 @@ const toggleShoppingHandler = event => {
     return;
   }
   if (myBooksId.indexOf(idToToggle) !== -1) {
-    indexToRemove = myBooksId.indexOf(idToToggle);
+    const indexToRemove = myBooksId.indexOf(idToToggle);
     myBooksId.splice(indexToRemove, 1);
     localStorage.save('myBooksId', myBooksId);
     toggleShoppingButton.textContent = 'Add to shopping list';
