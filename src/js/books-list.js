@@ -75,7 +75,7 @@ const showCategory = category => {
     book.innerHTML = `
         <div class="books__list--card"><img data-mainId="${element._id}" src="${element.book_image}" class="books__list--image"/>
         <div class="books__list--description">
-        <span data-mainId="${book._id}" class="books__list--title">${element.title}</span>
+        <span data-mainId="${element._id}" class="books__list--title">${element.title}</span>
         <br/>
         <span class="books__list--author">${element.author}</span>
         </div>
