@@ -1,23 +1,22 @@
-import axios from "axios";
+import axios from 'axios';
+import Notiflix from 'notiflix';
 
-
-const topBooks = "top-books";
-const categoryList = "category-list";
+const topBooks = 'top-books';
+const categoryList = 'category-list';
 //let bookID; // ID książki
 //let category; // nazwa kategorii
 //const categorySelected = `category?category=${category}`; zmienna do wywołania konkretnej kategorii
 
+const getBooksApi = async value => {
+  try {
+    const respons = await axios.get(`https://books-backend.p.goit.global/books/${value}`);
+    return respons;
+  } catch (error) {
+    Notify.warning('Upssss.... not this time');
+  }
+};
 
-const getBooksApi = (value) => {
-     return axios
-     .get(`https://books-backend.p.goit.global/books/${value}`)
-     .then(respons => {
-         return respons
-     })
- }
-
-
-export {getBooksApi, topBooks, categoryList};
+export { getBooksApi, topBooks, categoryList };
 
 //-------------poniżej przykład wywołania funkcji pobierającej dane z api-------------//
 
