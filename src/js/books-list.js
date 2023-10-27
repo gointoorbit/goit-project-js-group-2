@@ -56,6 +56,11 @@ const sendCategory = categoryName => {
 };
 
 const pageCategory = async categoryName => {
+  for (const element of boxCategories.children) {
+    if (element.innerHTML === categoryName) {
+      changeCategoryColor(element);
+    }
+  }
   categorySelected = `category?category=${categoryName}`;
   const category = await getBooksApi(categorySelected);
   return showCategory(category);
