@@ -1,3 +1,12 @@
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   & body {
@@ -39,6 +48,7 @@ html {
 }
 
 .books {
+  animation: show 0.25s ease-in-out;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -95,6 +105,39 @@ html {
     @include desktop {
       gap: 24px;
     }
+
+    &--box:hover &--overlay {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    &--box {
+      position: relative;
+    }
+
+    &--overlay {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom: 0;
+      width: 100%;
+      height: 23%;
+      opacity: 0;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      background-color: var(--color-yellow-btn);
+      transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      &-text {
+        font-family: DM Sans;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.3;
+        text-transform: uppercase;
+        color: var(--color-black-btn);
+      }
+    }
+
     &--card {
       @include tablet {
         width: 218px;
