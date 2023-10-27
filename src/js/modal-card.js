@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
 import amazonIcon from '/src/images/amazon-light-mode.svg';
@@ -8,6 +9,7 @@ const booksSection = document.querySelector('.books__list');
 let myBooksId = localStorage.load('myBooksId') || [];
 let modalCloseButton = document.querySelector('.modal-card__close-box') || null;
 
+// Handler: close modal window using close button X //
 const closeButtonHandler = () => {
   modalSection.innerHTML = '';
   modalCloseButton.removeEventListener('click', closeButtonHandler);
@@ -15,6 +17,7 @@ const closeButtonHandler = () => {
   window.removeEventListener('click', backdropClickHandler);
 };
 
+// Handler: close modal window using Escape key //
 const escapeKeyHandler = event => {
   if (event.key === 'Escape') {
     modalSection.innerHTML = '';
@@ -24,6 +27,7 @@ const escapeKeyHandler = event => {
   }
 };
 
+// Handler: close modal window by clicking on backdrop //
 const backdropClickHandler = event => {
   if (event.target.classList.contains('modal-card__backdrop')) {
     modalSection.innerHTML = '';
@@ -33,6 +37,7 @@ const backdropClickHandler = event => {
   }
 };
 
+// Button handler: Add to / Remove from shopping list - toggler //
 const toggleShoppingHandler = event => {
   const idToToggle = event.target.dataset.modalid;
   myBooksId = localStorage.load('myBooksId') || [];
@@ -55,6 +60,7 @@ const toggleShoppingHandler = event => {
   }
 };
 
+// Chceck if the book is already added to Shopping List //
 const adjustModalCard = id => {
   const toggleShoppingButton = document.querySelector('.button-shopping__content');
   const shoppingCongrats = document.querySelector('.modal-card__congrats');
@@ -71,6 +77,7 @@ const adjustModalCard = id => {
   }
 };
 
+// Create modal window with book info, adjust text and add event listeners to close //
 const showModalCard = myBook => {
   const { _id, book_image, title, description, author, buy_links } = myBook;
   const markup = `<div class="modal-card__backdrop">
@@ -146,16 +153,18 @@ const showModalCard = myBook => {
   toggleShoppingButton.addEventListener('click', toggleShoppingHandler);
 };
 
+// Function: Render modal window with book card by ID //
 const renderModalCard = bookID => {
   getBooksApi(bookID)
     .then(book => {
       return showModalCard(book.data);
     })
     .catch(error => {
-      console.log(error);
+      Notiflix.Notify.failure('Ooops... Something went wrong! Please, try again.');
     });
 };
 
+// Main page event listener - click on image or title of the book //
 booksSection.addEventListener('click', event => {
   if (
     event.target.classList.contains('books__list--image') ||

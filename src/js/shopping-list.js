@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
 import amazonIcon from '/src/images/amazon-light-mode.svg';
@@ -83,7 +84,7 @@ const renderList = array => {
         return showMyBook(book.data);
       })
       .catch(error => {
-        console.log(error);
+        Notiflix.Notify.failure('Ooops... Something went wrong! Please, try again.');
       });
   });
 };
