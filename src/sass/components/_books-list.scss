@@ -116,6 +116,7 @@ html {
     }
 
     &--overlay {
+      cursor: pointer;
       position: absolute;
       display: flex;
       justify-content: center;
