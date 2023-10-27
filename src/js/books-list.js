@@ -1,9 +1,12 @@
 import { getBooksApi, categoryList, topBooks } from './api.js';
+import throttle from 'lodash.throttle';
+
 const boxCategories = document.querySelector('.books__categories ul');
 const categoryTitle = document.querySelector('.books__header');
-const booksList = document.querySelector('.books__list');
+const booksSection = document.querySelector('.books__list');
 let lastCategory;
 let categorySelected;
+let categoryData;
 
 const changeCategoryColor = category => {
   if (lastCategory) {
@@ -23,36 +26,12 @@ const changeTitleColor = element => {
         ${lastElement}</span>`;
 };
 
-const sendCategory = categoryName => {
-  changeCategoryColor(categoryName);
-
-  if (categoryName.innerHTML === 'All categories') {
-    categorySelected = topBooks;
-    getBooksApi(categorySelected).then(category => {
-      console.log(category.data);
-      console.log(window.screen.width);
-      if (window.screen.width <= 768) {
-        showTopBooks(category.data, 1);
-      } else if (window.screen.width <= 1440) {
-        showTopBooks(category.data, 3);
-      } else {
-        showTopBooks(category.data, 5);
-      }
-    });
-  } else {
-    pageCategory(categoryName.innerHTML);
-  }
+const fetchCategories = async () => {
+  const categories = await getBooksApi(categoryList);
+  return allCategory(categories.data);
 };
 
-boxCategories.addEventListener('click', () => sendCategory(event.target));
-
-getBooksApi(categoryList)
-  .then(categories => {
-    return allCategory(categories.data);
-  })
-  .catch(error => {
-    console.log(error);
-  });
+fetchCategories();
 
 const allCategory = categoryName => {
   categoryName.forEach(element => {
@@ -64,78 +43,90 @@ const allCategory = categoryName => {
 
   boxCategories.addEventListener('click', () => sendCategory(event.target));
 };
-const pageCategory = categoryName => {
+
+const sendCategory = categoryName => {
+  changeCategoryColor(categoryName);
+  if (categoryName.innerHTML === 'All categories') {
+    pageTopBooks();
+    window.addEventListener('resize', throttle(adjustBooksList, 250));
+  } else {
+    window.removeEventListener('resize', throttle(adjustBooksList, 250));
+    pageCategory(categoryName.innerHTML);
+  }
+};
+
+const pageCategory = async categoryName => {
   categorySelected = `category?category=${categoryName}`;
-  getBooksApi(categorySelected).then(category => {
-    return showCategory(category);
-  });
+  const category = await getBooksApi(categorySelected);
+  return showCategory(category);
 };
 
 const showCategory = category => {
   changeTitleColor(category.data[0].list_name);
-
-  booksList.innerHTML = '';
+  booksSection.innerHTML = '';
   category.data.forEach(element => {
     const book = document.createElement('li');
-    booksList.append(book);
+    booksSection.append(book);
     book.innerHTML = `
-        <div class='books__list--card'><img src="${element.book_image}" class='books__list--image'/>
-        <div class='books__list--description'>
-        <span class='books__list--title'>${element.title}</span>
+        <div class="books__list--card"><img data-mainId="${element._id}" src="${element.book_image}" class="books__list--image"/>
+        <div class="books__list--description">
+        <span data-mainId="${book._id}" class="books__list--title">${element.title}</span>
         <br/>
-        <span class='books__list--author'>${element.author}</span>
+        <span class="books__list--author">${element.author}</span>
         </div>
         </div>`;
   });
 };
 
-sendCategory(boxCategories.firstElementChild);
+const pageTopBooks = async () => {
+  changeCategoryColor(boxCategories.firstElementChild);
+  const category = await getBooksApi(topBooks);
+  categoryData = category.data;
+  adjustBooksList(categoryData);
+  return categoryData;
+};
 
 const showTopBooks = (topBooks, itemNumbers) => {
   changeTitleColor('Best Sellers Books');
-
-  booksList.innerHTML = '';
+  booksSection.innerHTML = '';
   for (const category of topBooks) {
     const categoryCard = document.createElement('div');
-
-    booksList.append(categoryCard);
+    booksSection.append(categoryCard);
     categoryCard.classList.add('books__list--category');
     categoryCard.insertAdjacentHTML(
       'beforeend',
       `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul><div class'books__list--category-see-more'><button class='see-more-btn'>see more</button></div>`,
     );
-    console.log(category.list_name);
     let booksArray = category.books;
     let adjustedBooksArray = booksArray.slice(0, itemNumbers);
-    console.log(itemNumbers);
-    console.log(adjustedBooksArray);
+
     for (const book of adjustedBooksArray) {
       let booksOfCategory = document.querySelectorAll('.books__list--category-set');
       booksOfCategory[booksOfCategory.length - 1].insertAdjacentHTML(
         'beforeend',
-        `<li class="books__list--element-info"><img data-mainId='${book._id}' class='books__list--image' src="${book.book_image}"/><div class="books__list--element-description"><span data-mainId='${book._id}' class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
+        `<li class="books__list--element-info"><img data-mainId="${book._id}" class="books__list--image" src="${book.book_image}"/><div class="books__list--element-description"><span data-mainId="${book._id}" class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
       );
     }
   }
 };
 
+const adjustBooksList = () => {
+  if (window.screen.width <= 768) {
+    return showTopBooks(categoryData, 1);
+  } else if (window.screen.width <= 1440) {
+    return showTopBooks(categoryData, 3);
+  } else {
+    return showTopBooks(categoryData, 5);
+  }
+};
+
+sendCategory(boxCategories.firstElementChild);
+
 document.addEventListener('click', function (e) {
   const target = e.target.closest('.see-more-btn');
   if (target) {
     const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
+    window.removeEventListener('resize', throttle(adjustBooksList, 250));
     pageCategory(myCategory);
-  }
-});
-
-const booksSection = document.querySelector('.books__list');
-
-booksSection.addEventListener('click', event => {
-  if (
-    event.target.classList.contains('books__list--image') ||
-    event.target.classList.contains('books__list--title')
-  ) {
-    const selectedId = event.target.dataset.mainid;
-    console.log(selectedId);
-    //Tutaj dodać funkcje pobierania danych z api i tworzenia modala
   }
 });
