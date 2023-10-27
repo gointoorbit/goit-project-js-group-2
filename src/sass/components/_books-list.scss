@@ -41,6 +41,13 @@ html {
 .books {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  @media screen and (min-width: 768px) and (max-width: 1449px) {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
   &__categories {
     color: var(--color-list-category);
@@ -64,11 +71,46 @@ html {
     font-weight: 700;
     line-height: 32px;
     letter-spacing: -1.28px;
+    margin-bottom: 40px;
     &--color {
       color: var(--color-purple-btn);
     }
+    @include tablet {
+      font-size: 48px;
+      line-height: 52px;
+      letter-spacing: 1.92px;
+    }
+    @include desktop {
+      margin-top: 40px;
+    }
   }
   &__list {
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      // align-content: space-between;
+      gap: 25px;
+    }
+    @include desktop {
+      gap: 24px;
+    }
+    &--card {
+      @include tablet {
+        width: 218px;
+      }
+      @include desktop {
+        width: 180px;
+      }
+    }
+    &--description {
+      padding-top: 14px;
+      padding-bottom: 40px;
+      @include tablet {
+        padding-bottom: 15px;
+      }
+    }
+
     &--category {
       display: flex;
       flex-direction: column;
@@ -83,41 +125,63 @@ html {
       line-height: 1.3;
       letter-spacing: 0.42px;
       text-transform: uppercase;
+      margin-bottom: 18px;
+      @include tablet {
+        line-height: 1.7;
+      }
     }
 
     &--category-set {
       display: flex;
-      justify-content: center;
       flex-direction: column;
+
       @include tablet {
         flex-direction: row;
+        gap: 25px;
+        justify-content: space-between;
+      }
+      @include desktop {
+        gap: 24px;
       }
     }
 
     &--category-see-more {
-      padding-top: 8px;
-      display: flex;
-      justify-content: flex-end;
-      padding-bottom: 40px;
+      margin-top: 8px;
+      text-align: right;
+      margin-bottom: 40px;
+      @include desktop {
+        margin-top: 20px;
+      }
+      @include desktop {
+        margin-top: 32px;
+      }
     }
 
     &--image {
-      padding-top: 18px;
       border-radius: 8px;
-      max-width: 385px;
-      max-height: 485px;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
       @include tablet {
-        width: 218px;
         height: 316px;
       }
       @include desktop {
-        width: 180px;
-        height: 256px;
+        max-height: 256px;
       }
     }
-    &--description {
+
+    &--element-info {
+      @include tablet {
+        width: 218px;
+      }
+      @include desktop {
+        width: 180px;
+      }
+    }
+
+    &--element-description {
       padding-top: 14px;
-      gap: 4px;
+      margin-bottom: 18px;
     }
 
     &--title {

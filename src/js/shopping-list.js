@@ -1,22 +1,10 @@
+import Notiflix from 'notiflix';
 import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
 import amazonIcon from '/src/images/amazon-light-mode.svg';
 import appleBooksIcon from '/src/images/apple-books.svg';
 
-// Simulation of adding books to Shopping List (Local Storage) //
-// It will be deleted when adding books Ids to Local Storage from main page will work //
-const booksIdToLocalStorage = [
-  '643282b1e85766588626a0dc',
-  '643282b1e85766588626a0ba',
-  '643282b1e85766588626a0b8',
-  '643282b1e85766588626a0c2',
-  '643282b1e85766588626a0be',
-  '643282b2e85766588626a110',
-];
-localStorage.save('test-Ids', booksIdToLocalStorage);
-// ----------------------------------------------------------- //
-
-let booksIdList = [];
+let booksIdList = localStorage.load('myBooksId') || [];
 const cardsList = document.querySelector('.cards-list');
 const shoppingEmpty = document.querySelector('.shopping-empty');
 shoppingEmpty.style.display = 'none';
@@ -96,7 +84,7 @@ const renderList = array => {
         return showMyBook(book.data);
       })
       .catch(error => {
-        console.log(error);
+        Notiflix.Notify.failure('Ooops... Something went wrong! Please, try again.');
       });
   });
 };
@@ -104,7 +92,7 @@ const renderList = array => {
 // Load / refresh page event listener //
 window.addEventListener('load', () => {
   cardsList.innerHTML = '';
-  booksIdList = localStorage.load('test-Ids'); // <--- change "key" - test-Ids
+  booksIdList = localStorage.load('myBooksId'); // <--- "key"
   if (booksIdList.length === 0) {
     shoppingEmpty.style.display = 'flex';
     cardsList.removeEventListener('click', removeCardHandler);
@@ -118,7 +106,7 @@ window.addEventListener('load', () => {
 const removeCard = cardId => {
   const indexToRemove = booksIdList.indexOf(cardId);
   booksIdList.splice(indexToRemove, 1);
-  localStorage.save('test-Ids', booksIdList); // <--- change "key" - test-Ids
+  localStorage.save('myBooksId', booksIdList); // <--- "key"
   cardsList.innerHTML = '';
 
   if (booksIdList.length === 0) {
