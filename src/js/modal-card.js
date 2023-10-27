@@ -168,7 +168,8 @@ const renderModalCard = bookID => {
 booksSection.addEventListener('click', event => {
   if (
     event.target.classList.contains('books__list--image') ||
-    event.target.classList.contains('books__list--title')
+    event.target.classList.contains('books__list--title') ||
+    event.target.classList.contains('books__list--overlay')
   ) {
     const selectedId = event.target.dataset.mainid;
     modalSection.innerHTML = '';
