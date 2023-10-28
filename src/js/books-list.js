@@ -73,7 +73,7 @@ const showCategory = category => {
     const book = document.createElement('li');
     booksSection.append(book);
     book.innerHTML = `
-        <div class="books__list--card"><div class='books__list--box'><div data-mainId='${element._id}' class='books__list--overlay'><span class='books__list--overlay-text'>quick view</span></div><img data-mainId="${element._id}" src="${element.book_image}" class="books__list--image"/></div>
+        <div class="books__list--card"><div class='books__list--box'><div data-mainId='${element._id}' class='books__list--overlay'><span data-mainId='${element._id}' class='books__list--overlay-text'>quick view</span></div><img data-mainId="${element._id}" src="${element.book_image}" class="books__list--image"/></div>
         <div class="books__list--description">
         <span data-mainId="${element._id}" class="books__list--title">${element.title}</span>
         <br/>
@@ -109,7 +109,7 @@ const showTopBooks = (topBooks, itemNumbers) => {
       let booksOfCategory = document.querySelectorAll('.books__list--category-set');
       booksOfCategory[booksOfCategory.length - 1].insertAdjacentHTML(
         'beforeend',
-        `<li class="books__list--element-info"><div class='books__list--box'><div data-mainId='${book._id}' class='books__list--overlay'><span class='books__list--overlay-text'>quick view</span></div><img data-mainId="${book._id}" class="books__list--image" src="${book.book_image}"/></div><div class="books__list--element-description"><span data-mainId="${book._id}" class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
+        `<li class="books__list--element-info"><div class='books__list--box'><div data-mainId='${book._id}' class='books__list--overlay'><span data-mainId='${book._id}' class='books__list--overlay-text'>quick view</span></div><img data-mainId="${book._id}" class="books__list--image" src="${book.book_image}"/></div><div class="books__list--element-description"><span data-mainId="${book._id}" class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
       );
     }
   }
