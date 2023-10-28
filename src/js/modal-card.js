@@ -169,7 +169,8 @@ booksSection.addEventListener('click', event => {
   if (
     event.target.classList.contains('books__list--image') ||
     event.target.classList.contains('books__list--title') ||
-    event.target.classList.contains('books__list--overlay')
+    event.target.classList.contains('books__list--overlay') ||
+    event.target.classList.contains('books__list--overlay-text')
   ) {
     const selectedId = event.target.dataset.mainid;
     modalSection.innerHTML = '';
