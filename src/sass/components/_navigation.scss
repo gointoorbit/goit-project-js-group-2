@@ -34,6 +34,15 @@
   &__icon {
     fill: var(--color-main-font);
   }
+  &__book-count {
+    background-color: rgba(238, 75, 10, 0.972);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 1px 1px 0 0;
+    margin-top: -10px;
+  }
 }
 
 .navigation--mobile-menu {

@@ -3,6 +3,7 @@ import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
 import amazonIcon from '/src/images/amazon-light-mode.svg';
 import appleBooksIcon from '/src/images/apple-books.svg';
+import {updateBookCount} from './book-count.js';  
 
 let booksIdList = localStorage.load('myBooksId') || [];
 const cardsList = document.querySelector('.cards-list');
@@ -125,3 +126,6 @@ const removeCardHandler = event => {
   const removeCardId = event.target.dataset.id;
   removeCard(removeCardId);
 };
+
+// book counting function
+updateBookCount();
