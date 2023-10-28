@@ -71,19 +71,31 @@
     color: var(--color-white-btn);
     @include font($fs14, $fw500, -0.56px, 1.29);
     font-family: $main-fonts;
-    &--shopping-list {
-      padding: 0;
-    }
-  }
-
-  &__link--current {
-    color: var(--color-black-btn);
-    background-color: var(--color-yellow-btn);
-    @include font($fs14, $fw700, -0.56px, 1.29);
-    border-radius: 36px;
   }
 
   &__icon {
     fill: var(--color-white-btn);
+  }
+}
+
+.navigation__link.navigation__link--current {
+  color: var(--color-black-btn);
+  background-color: var(--color-yellow-btn);
+  @include font($fs14, $fw700, -0.56px, 1.29);
+  border-radius: 36px;
+
+  & .navigation__icon {
+    fill: var(--color-black-btn);
+  }
+}
+
+.navigation--mobile-menu__link.navigation__link--current {
+  color: var(--color-black-btn);
+  background-color: var(--color-yellow-btn);
+  @include font($fs14, $fw700, -0.56px, 1.29);
+  border-radius: 36px;
+
+  & .navigation--mobile-menu__icon {
+    fill: var(--color-black-btn);
   }
 }
