@@ -99,7 +99,6 @@ html {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      // align-content: space-between;
       gap: 25px;
     }
     @include desktop {
@@ -113,6 +112,7 @@ html {
 
     &--box {
       position: relative;
+      cursor: pointer;
     }
 
     &--overlay {
@@ -206,6 +206,7 @@ html {
       width: 100%;
       height: auto;
       object-fit: cover;
+      // cursor: pointer;
       @include tablet {
         height: 316px;
       }
@@ -237,6 +238,7 @@ html {
       line-height: 1.1;
       letter-spacing: -0.64px;
       text-transform: uppercase;
+      cursor: pointer;
     }
     &--author {
       color: var(--color-author-font);
