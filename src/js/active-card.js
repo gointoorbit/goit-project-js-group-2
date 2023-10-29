@@ -1,9 +1,11 @@
 const currentSubpage = window.location.pathname;
-console.log(currentSubpage);
 const nav = document.querySelectorAll('.navigation--header__link');
 const navMobile = document.querySelectorAll('.navigation--mobile-menu__link');
 
-if (currentSubpage === '/') {
+const splittedPath = currentSubpage.split('');
+const lastPathMark = splittedPath[splittedPath.length - 1];
+
+if (lastPathMark === '/') {
   nav[0].classList.add('navigation__link--current');
   navMobile[0].classList.add('navigation__link--current');
 } else {
@@ -20,7 +22,6 @@ if (currentSubpage === '/') {
   }
 
   const currentIndex = linksPath.indexOf(currentSubpage);
-
   const currentIndexMobile = linksPathMobile.indexOf(currentSubpage);
 
   nav[currentIndex].classList.add('navigation__link--current');
