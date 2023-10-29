@@ -93,11 +93,11 @@ const supportArray = [
     .join('');
 }
 
-// function onClick(evt) {
-//   if (!evt.target.classList.contains('js-support')) {
-//     return;
-//   }
-// }
+function onClick(evt) {
+  if (!evt.target.classList.contains('js-support')) {
+    return;
+  }
+}
 
 let position = 0;
 let slidesToShow = 6;
