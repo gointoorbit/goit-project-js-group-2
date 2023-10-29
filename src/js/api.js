@@ -12,7 +12,7 @@ const getBooksApi = async value => {
     const respons = await axios.get(`https://books-backend.p.goit.global/books/${value}`);
     return respons;
   } catch (error) {
-    Notify.warning('Upssss.... not this time');
+    Notiflix.Notify.warning('Ooops... Something went wrong! Please, try again.');
   }
 };
 
