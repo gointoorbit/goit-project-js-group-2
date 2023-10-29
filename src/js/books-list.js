@@ -1,5 +1,5 @@
 import { getBooksApi, categoryList, topBooks } from './api.js';
-import throttle from 'lodash.throttle';
+// import throttle from 'lodash.throttle';
 import { updateBookCount } from './book-count.js';
 
 const boxCategories = document.querySelector('.books__categories ul');
@@ -45,7 +45,7 @@ const allCategory = categoryName => {
   boxCategories.addEventListener('click', () => sendCategory(event.target));
 };
 
-function throttle(mainFunction, delay) {
+function throttling(mainFunction, delay) {
   let timerFlag = null;
 
   return (...args) => {
@@ -68,7 +68,7 @@ const adjustBooksList = () => {
   }
 };
 
-const throttledAdjustList = throttle(adjustBooksList, 500);
+const throttledAdjustList = throttling(adjustBooksList, 250);
 
 const sendCategory = categoryName => {
   changeCategoryColor(categoryName);
