@@ -45,13 +45,38 @@ const allCategory = categoryName => {
   boxCategories.addEventListener('click', () => sendCategory(event.target));
 };
 
+function throttle(mainFunction, delay) {
+  let timerFlag = null;
+
+  return (...args) => {
+    if (timerFlag === null) {
+      mainFunction(...args);
+      timerFlag = setTimeout(() => {
+        timerFlag = null;
+      }, delay);
+    }
+  };
+}
+
+const adjustBooksList = () => {
+  if (window.screen.width <= 768) {
+    return showTopBooks(categoryData, 1);
+  } else if (window.screen.width <= 1440) {
+    return showTopBooks(categoryData, 3);
+  } else {
+    return showTopBooks(categoryData, 5);
+  }
+};
+
+const throttledAdjustList = throttle(adjustBooksList, 500);
+
 const sendCategory = categoryName => {
   changeCategoryColor(categoryName);
   if (categoryName.innerHTML === 'All categories') {
     pageTopBooks();
-    window.addEventListener('resize', throttle(adjustBooksList, 250));
+    window.addEventListener('resize', throttledAdjustList);
   } else {
-    window.removeEventListener('resize', throttle(adjustBooksList, 250));
+    window.removeEventListener('resize', throttledAdjustList);
     pageCategory(categoryName.innerHTML);
   }
 };
@@ -113,16 +138,6 @@ const showTopBooks = (topBooks, itemNumbers) => {
         `<li class="books__list--element-info"><div class='books__list--box'><div data-mainId='${book._id}' class='books__list--overlay'><span data-mainId='${book._id}' class='books__list--overlay-text'>quick view</span></div><img data-mainId="${book._id}" class="books__list--image" src="${book.book_image}"/></div><div class="books__list--element-description"><span data-mainId="${book._id}" class="books__list--title">${book.title}</span><br/><span class="books__list--author">${book.author}</span></div></li>`,
       );
     }
-  }
-};
-
-const adjustBooksList = () => {
-  if (window.screen.width <= 768) {
-    return showTopBooks(categoryData, 1);
-  } else if (window.screen.width <= 1440) {
-    return showTopBooks(categoryData, 3);
-  } else {
-    return showTopBooks(categoryData, 5);
   }
 };
 
