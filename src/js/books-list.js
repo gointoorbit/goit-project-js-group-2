@@ -45,18 +45,18 @@ const allCategory = categoryName => {
   boxCategories.addEventListener('click', () => sendCategory(event.target));
 };
 
-function throttling(mainFunction, delay) {
-  let timerFlag = null;
+// function throttling(mainFunction, delay) {
+//   let timerFlag = null;
 
-  return (...args) => {
-    if (timerFlag === null) {
-      mainFunction(...args);
-      timerFlag = setTimeout(() => {
-        timerFlag = null;
-      }, delay);
-    }
-  };
-}
+//   return (...args) => {
+//     if (timerFlag === null) {
+//       mainFunction(...args);
+//       timerFlag = setTimeout(() => {
+//         timerFlag = null;
+//       }, delay);
+//     }
+//   };
+// }
 
 const adjustBooksList = () => {
   if (window.screen.width <= 768) {
@@ -68,15 +68,17 @@ const adjustBooksList = () => {
   }
 };
 
-const throttledAdjustList = throttling(adjustBooksList, 250);
+// const throttledAdjustList = throttling(adjustBooksList, 100);
 
 const sendCategory = categoryName => {
   changeCategoryColor(categoryName);
   if (categoryName.innerHTML === 'All categories') {
     pageTopBooks();
-    window.addEventListener('resize', throttledAdjustList);
+    window.addEventListener('resize', adjustBooksList);
+    // window.addEventListener('resize', throttledAdjustList);
   } else {
-    window.removeEventListener('resize', throttledAdjustList);
+    window.removeEventListener('resize', adjustBooksList);
+    // window.removeEventListener('resize', throttledAdjustList);
     pageCategory(categoryName.innerHTML);
   }
 };
@@ -147,7 +149,8 @@ document.addEventListener('click', function (e) {
   const target = e.target.closest('.see-more-btn');
   if (target) {
     const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
-    window.removeEventListener('resize', throttle(adjustBooksList, 250));
+    window.removeEventListener('resize', adjustBooksList);
+    // window.removeEventListener('resize', throttledAdjustList);
     pageCategory(myCategory);
   }
   // Wywołaj funkcję, aby zainicjować liczbę książek
