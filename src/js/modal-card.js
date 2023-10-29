@@ -85,6 +85,7 @@ const showModalCard = myBook => {
       <div class="modal-card__close">
         <button type="button" class="modal-card__close-box"></button>
       </div>
+      <div class="modal-card__body">
       <div class="modal-card__img-box">
         <img
           src="${book_image}"
@@ -131,8 +132,13 @@ const showModalCard = myBook => {
             </li>
           </ul>
         </div>
+      </div>
+      </div>
+      <div class="modal-card__footer">
         <div class="button-shopping">
-          <button class="button-shopping__content" data-modalid="${_id}">add to shopping list</button>
+          <button class="button-shopping__content" data-modalid="${_id}">
+            add to shopping list
+          </button>
         </div>
         <div class="modal-card__congrats">
           <p class="modal-card__congrats-text">
