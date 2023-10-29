@@ -1,5 +1,5 @@
 const currentSubpage = window.location.pathname;
-
+console.log(currentSubpage);
 const nav = document.querySelectorAll('.navigation--header__link');
 const navMobile = document.querySelectorAll('.navigation--mobile-menu__link');
 
