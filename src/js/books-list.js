@@ -1,5 +1,6 @@
 import { getBooksApi, categoryList, topBooks } from './api.js';
 import throttle from 'lodash.throttle';
+import { updateBookCount } from './book-count.js';
 
 const boxCategories = document.querySelector('.books__categories ul');
 const categoryTitle = document.querySelector('.books__header');
@@ -134,4 +135,6 @@ document.addEventListener('click', function (e) {
     window.removeEventListener('resize', throttle(adjustBooksList, 250));
     pageCategory(myCategory);
   }
+  // Wywołaj funkcję, aby zainicjować liczbę książek
+  updateBookCount();
 });
