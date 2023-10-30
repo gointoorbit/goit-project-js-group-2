@@ -83,7 +83,6 @@ const toggleShoppingHandler = event => {
   }
 };
 
-
 // Chceck if the book is already added to Shopping List //
 const adjustModalCard = id => {
   const toggleShoppingButton = document.querySelector('.button-shopping__content');
@@ -105,17 +104,14 @@ const adjustModalCard = id => {
 const showModalCard = myBook => {
   const { _id, book_image, title, description, author, buy_links } = myBook;
   const markup = `<div class="modal-card__backdrop loading-gentle">
-    <div class="modal-card__box">
-      <div class="modal-card__close">
-        <button type="button" class="modal-card__close-box"></button>
-      </div>
+  <div class="modal-card__box">
+    <div class="modal-card__close">
+      <button type="button" class="modal-card__close-box"></button>
+    </div>
+    <div class="modal-card__body">
       <div class="modal-card__img-box loading-gentle">
-        <img
-          src="${book_image}"
-          alt="Book
-        cover"
-          class="modal-card__img"
-        />
+        <img src="${book_image}" alt="Book
+        cover" class="modal-card__img" />
       </div>
       <div class="modal-card__info">
         <div class="modal-card__info-body">
@@ -126,47 +122,36 @@ const showModalCard = myBook => {
         <div class="modal-card__shops">
           <ul class="shops-list modal">
             <li class="shops-list__item modal">
-              <a
-                href="${buy_links[0].url}"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                class="shops-list__link modal"
-                ><div class="shops-list__icon-box shops-list__icon-box--amazon modal">
-                  <img
-                    src="${amazonIcon}"
-                    alt="Amazon logo"
-                    class="shops-list__icon-img-amazon modal"
-                  /></div
-              ></a>
+              <a href="${buy_links[0].url}" target="_blank" rel="nofollow noopener noreferrer" class="shops-list__link modal">
+                <div class="shops-list__icon-box shops-list__icon-box--amazon modal">
+                  <img src="${amazonIcon}" alt="Amazon logo" class="shops-list__icon-img-amazon modal" />
+                </div>
+              </a>
             </li>
             <li class="shops-list__item modal">
-              <a
-                href="${buy_links[1].url}"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                class="shops-list__link modal"
-                ><div class="shops-list__icon-box shops-list__icon-box--apple modal">
-                  <img
-                    src="${appleBooksIcon}"
-                    alt="Apple Books logo"
-                    class="shops-list__icon-img-apple modal"
-                  /></div
-              ></a>
+              <a href="${buy_links[1].url}" target="_blank" rel="nofollow noopener noreferrer" class="shops-list__link modal">
+                <div class="shops-list__icon-box shops-list__icon-box--apple modal">
+                  <img src="${appleBooksIcon}" alt="Apple Books logo" class="shops-list__icon-img-apple modal" />
+                </div>
+              </a>
             </li>
           </ul>
         </div>
-        <div class="button-shopping">
-          <button class="button-shopping__content" data-modalid="${_id}">add to shopping list</button>
-        </div>
-        <div class="modal-card__congrats">
-          <p class="modal-card__congrats-text">
-            Congratulations! You have added the book to the shopping list. To delete, press the
-            button "Remove from the shopping list".
-          </p>
-        </div>
       </div>
     </div>
-  </div>`;
+    <div class="modal-card__footer">
+      <div class="button-shopping">
+        <button class="button-shopping__content" data-modalid="${_id}">add to shopping list</button>
+      </div>
+      <div class="modal-card__congrats">
+        <p class="modal-card__congrats-text">
+          Congratulations! You have added the book to the shopping list. To delete, press the
+          button "Remove from the shopping list".
+        </p>
+      </div>
+    </div>
+  </div>
+</div>`;
   modalSection.insertAdjacentHTML('beforeend', markup);
   modalCloseButton = document.querySelector('.modal-card__close-box');
   modalCloseButton.addEventListener('click', closeButtonHandler);
