@@ -43,22 +43,46 @@ const toggleShoppingHandler = event => {
   myBooksId = localStorage.load('myBooksId') || [];
   const toggleShoppingButton = document.querySelector('.button-shopping__content');
   const shoppingCongrats = document.querySelector('.modal-card__congrats');
+  const modalImgBox = document.querySelector('.modal-card__img-box');
+
   if (myBooksId.indexOf(idToToggle) === -1) {
     myBooksId.push(idToToggle);
     localStorage.save('myBooksId', myBooksId);
+
+    // Dodaj klasę do wywołania animacji przy dodawaniu do koszyka
+    modalImgBox.classList.add('animate-add-to-cart');
+
     toggleShoppingButton.textContent = 'Remove from the shopping list';
     shoppingCongrats.style.display = 'inline';
+
+    // Usuń klasę animacji po zakończeniu
+    modalImgBox.addEventListener('animationend', () => {
+      modalImgBox.classList.remove('animate-add-to-cart');
+    });
+
     return;
   }
+
   if (myBooksId.indexOf(idToToggle) !== -1) {
     const indexToRemove = myBooksId.indexOf(idToToggle);
     myBooksId.splice(indexToRemove, 1);
     localStorage.save('myBooksId', myBooksId);
+
+    // Dodaj klasę do wywołania animacji przy usunięciu z koszyka
+    modalImgBox.classList.add('animate-remove-from-cart');
+
     toggleShoppingButton.textContent = 'Add to shopping list';
     shoppingCongrats.style.display = 'none';
+
+    // Usuń klasę animacji po zakończeniu
+    modalImgBox.addEventListener('animationend', () => {
+      modalImgBox.classList.remove('animate-remove-from-cart');
+    });
+
     return;
   }
 };
+
 
 // Chceck if the book is already added to Shopping List //
 const adjustModalCard = id => {
@@ -80,13 +104,12 @@ const adjustModalCard = id => {
 // Create modal window with book info, adjust text and add event listeners to close //
 const showModalCard = myBook => {
   const { _id, book_image, title, description, author, buy_links } = myBook;
-  const markup = `<div class="modal-card__backdrop">
+  const markup = `<div class="modal-card__backdrop loading-gentle">
     <div class="modal-card__box">
       <div class="modal-card__close">
         <button type="button" class="modal-card__close-box"></button>
       </div>
-      <div class="modal-card__body">
-      <div class="modal-card__img-box">
+      <div class="modal-card__img-box loading-gentle">
         <img
           src="${book_image}"
           alt="Book
@@ -132,13 +155,8 @@ const showModalCard = myBook => {
             </li>
           </ul>
         </div>
-      </div>
-      </div>
-      <div class="modal-card__footer">
         <div class="button-shopping">
-          <button class="button-shopping__content" data-modalid="${_id}">
-            add to shopping list
-          </button>
+          <button class="button-shopping__content" data-modalid="${_id}">add to shopping list</button>
         </div>
         <div class="modal-card__congrats">
           <p class="modal-card__congrats-text">
