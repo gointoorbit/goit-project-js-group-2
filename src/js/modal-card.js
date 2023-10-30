@@ -6,8 +6,11 @@ import appleBooksIcon from '/src/images/apple-books.svg';
 
 const modalSection = document.querySelector('.modal-card');
 const booksSection = document.querySelector('.books__list');
+const loaderModal = document.querySelector('.loader--modal');
 let myBooksId = localStorage.load('myBooksId') || [];
 let modalCloseButton = document.querySelector('.modal-card__close-box') || null;
+
+loaderModal.style.display = 'none';
 
 // Handler: close modal window using close button X //
 const closeButtonHandler = () => {
@@ -82,7 +85,6 @@ const toggleShoppingHandler = event => {
     return;
   }
 };
-
 
 // Chceck if the book is already added to Shopping List //
 const adjustModalCard = id => {
@@ -179,8 +181,10 @@ const showModalCard = myBook => {
 
 // Function: Render modal window with book card by ID //
 const renderModalCard = bookID => {
+  loaderModal.style.display = 'block';
   getBooksApi(bookID)
     .then(book => {
+      loaderModal.style.display = 'none';
       return showModalCard(book.data);
     })
     .catch(error => {

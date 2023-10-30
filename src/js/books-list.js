@@ -5,6 +5,7 @@ import { updateBookCount } from './book-count.js';
 const boxCategories = document.querySelector('.books__categories ul');
 const categoryTitle = document.querySelector('.books__header');
 const booksSection = document.querySelector('.books__list');
+const loaderBooksList = document.querySelector('.loader--books-list');
 let lastCategory;
 let categorySelected;
 let categoryData;
@@ -84,6 +85,7 @@ const sendCategory = categoryName => {
 };
 
 const pageCategory = async categoryName => {
+  loaderBooksList.style.display = 'block';
   for (const element of boxCategories.children) {
     if (element.innerHTML === categoryName) {
       changeCategoryColor(element);
@@ -91,6 +93,7 @@ const pageCategory = async categoryName => {
   }
   categorySelected = `category?category=${categoryName}`;
   const category = await getBooksApi(categorySelected);
+  loaderBooksList.style.display = 'none';
   return showCategory(category);
 };
 
@@ -112,9 +115,11 @@ const showCategory = category => {
 };
 
 const pageTopBooks = async () => {
+  loaderBooksList.style.display = 'block';
   changeCategoryColor(boxCategories.firstElementChild);
   const category = await getBooksApi(topBooks);
   categoryData = category.data;
+  loaderBooksList.style.display = 'none';
   adjustBooksList(categoryData);
   return categoryData;
 };
