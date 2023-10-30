@@ -44,18 +44,3 @@
     drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.2));
   --apple-icon-filter-focus: grayscale(100%) drop-shadow(0px 3px 3px rgba(255, 255, 255, 0.2));
 }
-
-  // GENTLE LOADING OF ELEMENTS
-
-.loading-gentle {
-  animation: fadeIn 2s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
