@@ -143,3 +143,35 @@ button {
   border: 1.5px solid var(--color-black-btn);
   background: var(--color-purple-btn);
 }
+
+.up-btn:hover,
+.up-btn:focus {
+  opacity: 1;
+}
+
+.up-btn {
+  display: none;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 15;
+  opacity: 0.6;
+  &--circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(79, 46, 232, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &--2nd-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background-color: var(--color-purple-btn);
+  }
+}
