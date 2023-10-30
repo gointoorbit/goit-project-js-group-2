@@ -3,12 +3,14 @@ import * as localStorage from './local-storage.js';
 import { getBooksApi } from './api.js';
 import amazonIcon from '/src/images/amazon-light-mode.svg';
 import appleBooksIcon from '/src/images/apple-books.svg';
-import {updateBookCount} from './book-count.js';  
+import { updateBookCount } from './book-count.js';
 
 let booksIdList = localStorage.load('myBooksId') || [];
 const cardsList = document.querySelector('.cards-list');
 const shoppingEmpty = document.querySelector('.shopping-empty');
 shoppingEmpty.style.display = 'none';
+const loaderShoppingList = document.querySelector('.loader--shopping-list');
+loaderShoppingList.style.display = 'none';
 
 // Function: Creating book-card markup and adding to DOM //
 const showMyBook = myBook => {
@@ -79,9 +81,11 @@ const showMyBook = myBook => {
 
 // Fetch books by IDs from array and render list //
 const renderList = array => {
+  loaderShoppingList.style.display = 'block';
   array.forEach(bookID => {
     getBooksApi(bookID)
       .then(book => {
+        loaderShoppingList.style.display = 'none';
         return showMyBook(book.data);
       })
       .catch(error => {
