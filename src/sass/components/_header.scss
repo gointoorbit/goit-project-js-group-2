@@ -57,6 +57,10 @@
   }
   &__mobile-menu-icon {
     fill: var(--color-header-border);
+    &:hover,
+    &:focus {
+      fill: var(--color-purple-btn);
+    }
   }
 
   &__sign-up-btn {

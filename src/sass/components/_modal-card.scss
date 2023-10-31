@@ -84,6 +84,10 @@
     height: 24px;
     fill: var(--color-header-border);
     border-radius: 50%;
+    &:hover,
+    &:focus {
+      fill: var(--color-purple-btn);
+    }
   }
   &__info {
     margin: 0 24px 44px 24px;
@@ -136,6 +140,10 @@
     max-height: 32px;
   }
 
+  &___congrats {
+    margin-top: 8px;
+  }
+
   &__congrats-text {
     font-family: 'DM Sans';
     text-align: center;
@@ -155,12 +163,18 @@
       @include font($fs12, $fw400, -0.48px, 14px);
     }
   }
+  &__footer {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
 }
 .button-shopping {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 44px 62px;
+  margin-bottom: 8px;
   width: auto;
   height: auto;
   @include tablet {
@@ -222,7 +236,7 @@
 /* Styl animacji przy dodawaniu do koszyka */
 .animate-add-to-cart {
   animation-name: slideUpAndFadeIn;
-  animation-duration: 0.5s;
+  animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -230,7 +244,7 @@
 /* Styl animacji przy usuwaniu z koszyka */
 .animate-remove-from-cart {
   animation-name: slideDownAndFadeOut;
-  animation-duration: 1s;
+  animation-duration: 0.4s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -238,7 +252,7 @@
 //* Kluczowe klatki dla animacji przy dodawaniu do koszyka */
 @keyframes slideUpAndFadeIn {
   0% {
-    transform: translateY(0) scale(1.3);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
   100% {
@@ -254,7 +268,7 @@
     opacity: 0;
   }
   100% {
-    transform: translateY(0) scale(1.3);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
