@@ -18,9 +18,6 @@ html {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 1440;
-      margin: 24px;
-      padding-top: 40px;
 
       @include desktop {
         flex-direction: row;
@@ -29,12 +26,11 @@ html {
 
       & .elements-location {
         width: 375;
-        margin: 40px 0;
-        padding: 0 20px 0 20px;
+        padding: 40px 20px 0 20px;
         @include tablet {
           width: 768;
-          margin-bottom: 90px;
-          padding: 0 32px 0 32px;
+          margin-bottom: 100px;
+          padding: 40px 32px 0 32px;
           display: flex;
           justify-content: space-between;
         }
@@ -52,7 +48,6 @@ html {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  padding-bottom: 100px;
   @media screen and (min-width: 768px) and (max-width: 1440px) {
     max-width: 768px;
     padding-left: 32px;
@@ -62,7 +57,7 @@ html {
   &__categories {
     color: var(--color-list-category);
     cursor: pointer;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     overflow: auto;
     height: 230px;
     width: 335px;
@@ -70,6 +65,7 @@ html {
     @include tablet {
       height: 426px;
       width: 335px;
+      margin-bottom: 0;
     }
   }
 
