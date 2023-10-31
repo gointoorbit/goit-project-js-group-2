@@ -9,6 +9,12 @@
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 
+  &--books-list {
+    position: absolute;
+    top: 100px;
+    left: 300px;
+  }
+
   &--modal {
     position: fixed;
     top: 50hw;

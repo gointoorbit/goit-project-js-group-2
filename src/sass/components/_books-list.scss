@@ -15,7 +15,7 @@
   @include desktop {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 }
 
@@ -67,6 +67,7 @@
 
 .books {
   animation: show 0.25s ease-in-out;
+  position: relative;
   // display: flex;
   // flex-direction: column;
   // margin: 0 auto;
@@ -84,6 +85,7 @@
     line-height: 32px;
     letter-spacing: -1.28px;
     margin-bottom: 40px;
+
     &--color {
       color: var(--color-purple-btn);
     }
@@ -94,6 +96,7 @@
     }
     @include desktop {
       margin-top: 40px;
+      padding-left: 40px;
     }
   }
 
@@ -144,6 +147,7 @@
     }
 
     &--card {
+      // width: 100%;
       @include tablet {
         width: 218px;
       }
@@ -186,8 +190,8 @@
       @include tablet {
         flex-direction: row;
         gap: 25px;
-        justify-content: space-between;
       }
+
       @include desktop {
         gap: 24px;
       }
@@ -220,6 +224,7 @@
     }
 
     &--element-info {
+      width: 100%;
       @include tablet {
         width: 218px;
       }
