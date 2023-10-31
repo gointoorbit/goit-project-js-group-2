@@ -179,12 +179,18 @@
     text-transform: uppercase;
     color: var(--color-header-border);
     font-family: 'DM Sans';
+
     @include font($fs14, $fw700, -0.7px, 18px);
     @include tablet {
       @include font($fs18, $fw700, -0.18px, 24px);
       width: 499px;
       height: auto;
       padding: 20px auto;
+    }
+    &:hover,
+    &:focus {
+      color: var(--color-white-btn);
+      background-color: var(--color-purple-btn);
     }
   }
 }
