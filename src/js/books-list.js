@@ -156,7 +156,6 @@ document.addEventListener('click', function (e) {
   const target = e.target.closest('.see-more-btn');
   if (target) {
     const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
-    console.log(myCategory);
     window.removeEventListener('resize', adjustBooksList);
     // window.removeEventListener('resize', throttledAdjustList);
     pageCategory(myCategory);
