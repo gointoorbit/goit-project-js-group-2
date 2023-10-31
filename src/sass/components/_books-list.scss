@@ -239,6 +239,11 @@ html {
       letter-spacing: -0.64px;
       text-transform: uppercase;
       cursor: pointer;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      width: 100%;
     }
     &--author {
       color: var(--color-author-font);
@@ -248,6 +253,11 @@ html {
       font-weight: 400;
       line-height: 1.2;
       letter-spacing: -0.48px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      width: 100%;
     }
   }
 }
