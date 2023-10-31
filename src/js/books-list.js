@@ -73,7 +73,7 @@ const adjustBooksList = () => {
 // const throttledAdjustList = throttling(adjustBooksList, 100);
 
 const sendCategory = categoryName => {
-  categoryTitle.innerHTML = '';
+  // categoryTitle.innerHTML = '';
   booksSection.innerHTML = '';
   changeCategoryColor(categoryName);
   if (categoryName.innerHTML === 'All categories') {
@@ -88,6 +88,7 @@ const sendCategory = categoryName => {
 };
 
 const pageCategory = async categoryName => {
+  booksSection.innerHTML = '';
   loaderBooksList.style.display = 'block';
   for (const element of boxCategories.children) {
     if (element.innerHTML === categoryName) {
@@ -96,7 +97,7 @@ const pageCategory = async categoryName => {
   }
   categorySelected = `category?category=${categoryName}`;
   const category = await getBooksApi(categorySelected);
-  // loaderBooksList.style.display = 'none';
+  loaderBooksList.style.display = 'none';
   return showCategory(category);
 };
 
@@ -155,6 +156,7 @@ document.addEventListener('click', function (e) {
   const target = e.target.closest('.see-more-btn');
   if (target) {
     const myCategory = target.parentNode.parentNode.firstElementChild.innerHTML;
+    console.log(myCategory);
     window.removeEventListener('resize', adjustBooksList);
     // window.removeEventListener('resize', throttledAdjustList);
     pageCategory(myCategory);
