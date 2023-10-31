@@ -9,6 +9,7 @@ $gradient-background: radial-gradient(189.32% 190.93% at 59.76% -23.42%, #4f2ee8
   width: 100vw;
   height: 100vh;
   transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
   z-index: 10;
 
   @include tablet {
