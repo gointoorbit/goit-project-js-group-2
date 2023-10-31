@@ -11,10 +11,12 @@
     border-radius: 16px;
     max-width: 335px;
     height: 460px;
+    margin-bottom: 40px;
     @include tablet {
       padding-top: 26px;
       width: 335px;
       height: 474px;
+      margin-bottom: 0;
     }
     @include desktop {
       width: 356px;
