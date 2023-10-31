@@ -75,18 +75,14 @@
     }
   }
   &__close-box {
-    background-image: url('../images/x-close.svg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 24px 24px;
     @include flex-align;
     width: 24px;
     height: 24px;
-    fill: var(--color-header-border);
+    stroke: var(--color-header-border);
     border-radius: 50%;
     &:hover,
     &:focus {
-      fill: var(--color-purple-btn);
+      stroke: var(--color-purple-btn);
     }
   }
   &__info {
