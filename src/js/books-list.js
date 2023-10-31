@@ -60,6 +60,7 @@ const allCategory = categoryName => {
 // }
 
 const adjustBooksList = () => {
+  booksSection.innerHTML = '';
   if (window.screen.width <= 768) {
     return showTopBooks(categoryData, 1);
   } else if (window.screen.width <= 1440) {
@@ -72,6 +73,8 @@ const adjustBooksList = () => {
 // const throttledAdjustList = throttling(adjustBooksList, 100);
 
 const sendCategory = categoryName => {
+  categoryTitle.innerHTML = '';
+  booksSection.innerHTML = '';
   changeCategoryColor(categoryName);
   if (categoryName.innerHTML === 'All categories') {
     pageTopBooks();
@@ -93,13 +96,12 @@ const pageCategory = async categoryName => {
   }
   categorySelected = `category?category=${categoryName}`;
   const category = await getBooksApi(categorySelected);
-  loaderBooksList.style.display = 'none';
+  // loaderBooksList.style.display = 'none';
   return showCategory(category);
 };
 
 const showCategory = category => {
   changeTitleColor(category.data[0].list_name);
-  booksSection.innerHTML = '';
   category.data.forEach(element => {
     const book = document.createElement('li');
     booksSection.append(book);
@@ -126,7 +128,6 @@ const pageTopBooks = async () => {
 
 const showTopBooks = (topBooks, itemNumbers) => {
   changeTitleColor('Best Sellers Books');
-  booksSection.innerHTML = '';
   for (const category of topBooks) {
     const categoryCard = document.createElement('li');
     booksSection.append(categoryCard);
