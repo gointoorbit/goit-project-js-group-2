@@ -7,3 +7,4 @@ import './js/theme-modes.js';
 import './js/books-list.js';
 import './js/active-card.js';
 import './js/book-count.js';
+import './js/up-btn.js';
