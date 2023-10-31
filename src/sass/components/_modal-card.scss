@@ -13,22 +13,23 @@
   &__box {
     position: relative;
     max-width: 335px;
-    height: auto;
+    max-height: 100vh;
+    overflow-y: auto;
     padding-bottom: 40px;
     border: 2px solid var(--color-main-font);
     border-radius: 18px;
-  background-color: var(--color-header);
-  @include tablet {
-    display: flex;
-    max-width: 579px;
-    max-height: auto;
-    flex-direction: column;  
+    background-color: var(--color-header);
+    @include tablet {
+      display: flex;
+      max-width: 579px;
+      max-height: auto;
+      flex-direction: column;
     }
   }
   &__body {
-    @include tablet{
+    @include tablet {
       display: flex;
-}
+    }
   }
   &__backdrop {
     position: fixed;
@@ -36,37 +37,44 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(17, 17, 17, 0.40);
+    background: rgba(17, 17, 17, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 20;
   }
-  
+
   &__img-box.loading-gentle {
-    max-width: 287px;
-    max-height: 408px;
+    width: 287px;
+    height: 408px;
     border-radius: 8px;
     overflow: hidden;
     margin: 40px 24px 0 24px;
     @include tablet {
-    margin: 40px 0 40px 40px;
-    max-width: 192px;
-    max-height: 281px;
-}
-
+      margin: 40px 0 40px 40px;
+      width: 192px;
+      height: 281px;
+    }
+  }
   &__img {
     width: 100%;
-    height: auto;
+    height: 408px;
     object-fit: cover;
+    @include tablet {
+      height: 281px;
+    }
   }
 
   &__close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    @include tablet {
+      top: 24px;
+      right: 24px;
+    }
   }
-    &__close-box {
+  &__close-box {
     background-image: url('../images/x-close.svg');
     background-position: center center;
     background-repeat: no-repeat;
@@ -74,23 +82,24 @@
     @include flex-align;
     width: 24px;
     height: 24px;
-    margin-top: 50px;
-    
     fill: var(--color-header-border);
     border-radius: 50%;
   }
-}
   &__info {
-    margin: 0 24px 40px 24px;
+    margin: 0 24px 44px 24px;
     max-height: auto;
+    width: 279px;
     @include tablet {
-    margin: 40px 44px 30px 24px;
+      margin: 40px 44px 30px 24px;
+    }
   }
-}
   &__info-body {
     height: auto;
-    margin-bottom: 30px;
-}
+    margin-bottom: 14px;
+    @include tablet {
+      margin-bottom: 20px;
+    }
+  }
   &__title {
     color: var(--color-header-border);
     padding: 14px 0 5px 0;
@@ -98,62 +107,56 @@
     @include tablet {
       padding: 0;
       @include font($fs24, $fw700, -0.96px, 28px);
-  } 
-}
+    }
+  }
   &__author {
     color: var(--color-info-empty);
     font-family: 'DM Sans';
-    @include font ($fs12, $fw400, -0.48px, 14px);
+    @include font($fs12, $fw400, -0.48px, 14px);
     font-style: italic;
-  @include tablet {
-    @include font ($fs14, $fw400, -0.56px, 18px);
-    margin-top: 8px;
+    @include tablet {
+      @include font($fs14, $fw400, -0.56px, 18px);
+      margin-top: 8px;
+    }
   }
-}
   &__description {
     padding-top: 18px;
     max-width: 287px;
-    max-height: 70px;
+    height: auto;
     flex-shrink: 0;
     color: var(--color-main-font);
     @include font($fs14, $fw400, -0.56px, 18px);
     @include tablet {
       @include font($fs14, $fw400, -0.4px, 18px);
       max-width: 279px;
-      max-height: 70px;
-      margin: 0 0 30px 0;
     }
   }
   &__shops {
     max-width: 115px;
     max-height: 32px;
-    margin-top: 12px;
-    @include tablet {
-      margin-top: 30px;
-    }
   }
-  
+
   &__congrats-text {
     font-family: 'DM Sans';
     text-align: center;
     max-width: 242px;
     margin: auto;
-    @include font ($fs10, $fw400, -0.4px, 12px);
+    @include font($fs10, $fw400, -0.4px, 12px);
     color: var(--color-info-empty);
     font-family: 'DM Sans';
     @include tablet {
-      @include font ($fs12, $fw400, -0.48px, 14px);
-      bottom: 5px;;
+      @include font($fs12, $fw400, -0.48px, 14px);
+      bottom: 5px;
       margin: auto;
       max-width: 324px;
       max-height: auto;
-      }
+    }
     @include desktop {
-      @include font ($fs12, $fw400, -0.48px, 14px);
+      @include font($fs12, $fw400, -0.48px, 14px);
     }
   }
 }
-.button-shopping { 
+.button-shopping {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -165,24 +168,23 @@
     max-height: auto;
     padding: 0;
     margin: auto 40px;
-  } 
-
+  }
 
   &__content {
-  justify-content: center;
-  align-items: center;
-  border-radius: 40px;
-  border: 2px solid var(--color-purple-btn);
-  padding: 14px 28px;
-  text-transform: uppercase;
-  color: var(--color-header-border);
-  font-family: 'DM Sans';
-  @include font ($fs14, $fw700, -0.7px, 18px);
-  @include tablet {
-    @include font ($fs18, $fw700, -0.18px, 24px);
-    width: 499px;
-    height: auto;
-    padding: 20px auto;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    border: 2px solid var(--color-purple-btn);
+    padding: 14px 28px;
+    text-transform: uppercase;
+    color: var(--color-header-border);
+    font-family: 'DM Sans';
+    @include font($fs14, $fw700, -0.7px, 18px);
+    @include tablet {
+      @include font($fs18, $fw700, -0.18px, 24px);
+      width: 499px;
+      height: auto;
+      padding: 20px auto;
     }
   }
 }
@@ -190,7 +192,6 @@
 .shops-list__icon-img-amazon.modal {
   max-width: 62px;
   max-height: 19px;
-  
 }
 .shops-list__icon-box.shops-list__icon-box--amazon.modal {
   max-width: 100%;
@@ -203,14 +204,14 @@
 .shops-list__icon-box.shops-list__icon-box--apple.modal {
   width: 100%;
   height: 100%;
-    padding-left: 20px;
-    margin-top: 12px;
-    @include tablet{
-      padding-left: 5px;
-    }
+  padding-left: 20px;
+  margin-top: 12px;
+  @include tablet {
+    padding-left: 5px;
+  }
 }
 
- //...........................
+//...........................
 
 /* Styl animacji przy dodawaniu do koszyka */
 .animate-add-to-cart {
@@ -233,12 +234,10 @@
   0% {
     transform: translateY(0) scale(1.3);
     opacity: 1;
-   
   }
   100% {
     transform: translateY(-600px) scale(0.1);
     opacity: 0;
-   
   }
 }
 
@@ -247,11 +246,9 @@
   0% {
     transform: translateY(-600px) scale(0.1);
     opacity: 0;
-    
   }
   100% {
     transform: translateY(0) scale(1.3);
     opacity: 1;
-   
   }
 }
