@@ -18,6 +18,7 @@
     display: flex;
     gap: 4px;
     align-items: center;
+    justify-content: center;
     padding: 8px 16px;
     color: var(--color-main-font);
     @include font($fs14, $fw500, -0.56px, 1.29);
@@ -33,6 +34,7 @@
 
   &__icon {
     fill: var(--color-main-font);
+    margin-top: -4px;
   }
   &__book-count {
     background-color: rgba(238, 75, 10, 0.972);
@@ -41,7 +43,8 @@
     border-radius: 50%;
     text-align: center;
     padding: 1px 1px 0 0;
-    margin-top: -10px;
+    margin-top: -6px;
+    margin-left: -2px;
   }
 }
 
@@ -75,7 +78,8 @@
   &__link {
     display: flex;
     gap: 4px;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     padding: 8px 16px;
     color: var(--color-white-btn);
     @include font($fs14, $fw500, -0.56px, 1.29);
@@ -84,6 +88,7 @@
 
   &__icon {
     fill: var(--color-white-btn);
+    margin-top: -4px;
   }
 }
 

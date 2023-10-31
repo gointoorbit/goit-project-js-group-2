@@ -3,14 +3,20 @@ import { load } from './local-storage';
 
 // Funkcja: Zlicz książki i wyświetl liczbę w elemencie HTML
 function updateBookCount() {
+  console.log('funkcja wywolana');
   const booksIdList = load('myBooksId') || [];
-  const bookCountElement = document.getElementById('bookCount');
+  const bookCountHeaderElement = document.getElementById('bookCountHeader');
+  const bookCountMenuElement = document.getElementById('bookCountMenu');
 
   if (booksIdList.length === 0) {
-    bookCountElement.style.display = 'none';
+    bookCountHeaderElement.style.display = 'none';
+    bookCountMenuElement.style.display = 'none';
+
   } else {
-    bookCountElement.style.display = 'inline'; // Włącz wyświetlanie, jeśli liczba > 0
-    bookCountElement.textContent = '' + booksIdList.length;
+    bookCountHeaderElement.style.display = 'inline'; // Włącz wyświetlanie, jeśli liczba > 0
+    bookCountHeaderElement.textContent = '' + booksIdList.length;
+    bookCountMenuElement.style.display = 'inline'; // Włącz wyświetlanie, jeśli liczba > 0
+    bookCountMenuElement.textContent = '' + booksIdList.length;
   }
 };
 // Dodaj nasłuchiwanie na kliknięcia w przyciski "Add" i "Remove"
