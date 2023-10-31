@@ -2,7 +2,7 @@ import { getBooksApi, categoryList, topBooks } from './api.js';
 // import throttle from 'lodash.throttle';
 import { updateBookCount } from './book-count.js';
 
-const boxCategories = document.querySelector('.books__categories ul');
+const boxCategories = document.querySelector('.categories__list ul');
 const categoryTitle = document.querySelector('.books__header');
 const booksSection = document.querySelector('.books__list');
 const loaderBooksList = document.querySelector('.loader--books-list');
@@ -39,7 +39,7 @@ const allCategory = categoryName => {
   categoryName.forEach(element => {
     const category = document.createElement('li');
     boxCategories.append(category);
-    category.classList.add('books__categories--item');
+    category.classList.add('categories__item');
     category.innerHTML = `${element.list_name}`;
   });
 
@@ -128,7 +128,7 @@ const showTopBooks = (topBooks, itemNumbers) => {
   changeTitleColor('Best Sellers Books');
   booksSection.innerHTML = '';
   for (const category of topBooks) {
-    const categoryCard = document.createElement('div');
+    const categoryCard = document.createElement('li');
     booksSection.append(categoryCard);
     categoryCard.classList.add('books__list--category');
     categoryCard.insertAdjacentHTML(

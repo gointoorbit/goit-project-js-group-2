@@ -15,16 +15,17 @@
   @include desktop {
     flex-direction: row;
     align-items: flex-start;
+    justify-content: space-between;
   }
 }
 
 .elements-location {
-  width: 375;
-  padding: 40px 20px 0 20px;
+  // width: 375;
+  padding-top: 40px;
   @include tablet {
-    width: 768;
+    // width: 768;
     margin-bottom: 100px;
-    padding: 40px 32px 0 32px;
+    padding-top: 40px;
     display: flex;
     justify-content: space-between;
   }
@@ -34,18 +35,18 @@
   }
 }
 
-.books {
+.categories {
   animation: show 0.25s ease-in-out;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   @media screen and (min-width: 768px) and (max-width: 1440px) {
     max-width: 768px;
-    padding-left: 32px;
+    // padding-left: 32px;
     padding-right: 32px;
   }
 
-  &__categories {
+  &__list {
     color: var(--color-list-category);
     cursor: pointer;
     margin-bottom: 40px;
@@ -62,7 +63,18 @@
       margin-bottom: 80px;
     }
   }
+}
 
+.books {
+  animation: show 0.25s ease-in-out;
+  // display: flex;
+  // flex-direction: column;
+  // margin: 0 auto;
+  // @media screen and (min-width: 768px) and (max-width: 1440px) {
+  //   max-width: 768px;
+  //   // padding-left: 32px;
+  //   // padding-right: 32px;
+  // }
   &__header {
     color: var(--color-header-border);
     font-family: DM Sans;
@@ -84,6 +96,7 @@
       margin-top: 40px;
     }
   }
+
   &__list {
     @include tablet {
       display: flex;
@@ -92,6 +105,7 @@
       gap: 25px;
     }
     @include desktop {
+      padding-left: 40px;
       gap: 24px;
     }
 
@@ -167,7 +181,7 @@
 
     &--category-set {
       display: flex;
-      flex-direction: column;
+      // flex-direction: column;
 
       @include tablet {
         flex-direction: row;
@@ -251,6 +265,7 @@
     }
   }
 }
+
 .change-category-color {
   color: var(--color-selected-category);
   text-transform: uppercase;
