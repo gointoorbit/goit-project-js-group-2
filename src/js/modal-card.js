@@ -109,7 +109,10 @@ const showModalCard = myBook => {
   const markup = `<div class="modal-card__backdrop loading-gentle">
   <div class="modal-card__box">
     <div class="modal-card__close">
-      <button type="button" class="modal-card__close-box"></button>
+      <button type="button" class="modal-card__close-box"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="#111111">
+      <path d="M21 7L7 21M7 7L21 21" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    </button>
     </div>
     <div class="modal-card__body">
       <div class="modal-card__img-box loading-gentle">
