@@ -103,19 +103,31 @@
   &__title {
     color: var(--color-header-border);
     padding: 14px 0 5px 0;
-    @include font($fs16, $fw700, -0.64px, 18px);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.64px;
+    line-height: 18px;
     @include tablet {
       padding: 0;
-      @include font($fs24, $fw700, -0.96px, 28px);
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.96px;
+      line-height: 28px;
     }
   }
   &__author {
     color: var(--color-info-empty);
     font-family: 'DM Sans';
-    @include font($fs12, $fw400, -0.48px, 14px);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+    line-height: 14px;
     font-style: italic;
     @include tablet {
-      @include font($fs14, $fw400, -0.56px, 18px);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.56px;
+      line-height: 18px;
       margin-top: 8px;
     }
   }
@@ -125,9 +137,15 @@
     height: auto;
     flex-shrink: 0;
     color: var(--color-main-font);
-    @include font($fs14, $fw400, -0.56px, 18px);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.56px;
+    line-height: 18px;
     @include tablet {
-      @include font($fs14, $fw400, -0.4px, 18px);
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: -0.4px;
+      line-height: 18px;
       max-width: 279px;
     }
   }
@@ -145,18 +163,27 @@
     text-align: center;
     max-width: 242px;
     margin: auto;
-    @include font($fs10, $fw400, -0.4px, 12px);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: -0.4px;
+    line-height: 12px;
     color: var(--color-info-empty);
     font-family: 'DM Sans';
     @include tablet {
-      @include font($fs12, $fw400, -0.48px, 14px);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.48px;
+      line-height: 14px;
       bottom: 5px;
       margin: auto;
       max-width: 324px;
       max-height: auto;
     }
     @include desktop {
-      @include font($fs12, $fw400, -0.48px, 14px);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.48px;
+      line-height: 14px;
     }
   }
   &__footer {
@@ -189,10 +216,15 @@
     text-transform: uppercase;
     color: var(--color-header-border);
     font-family: 'DM Sans';
-
-    @include font($fs14, $fw700, -0.7px, 18px);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: -0.7px;
+    line-height: 18px;
     @include tablet {
-      @include font($fs18, $fw700, -0.18px, 24px);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.18px;
+      line-height: 24px;
       width: 499px;
       height: auto;
       padding: 20px auto;

@@ -96,44 +96,6 @@
   }
 }
 
-// .navigation {
-//   display: none;
-
-//   @include tablet {
-//     display: block;
-//   }
-
-//   &__list {
-//     display: flex;
-//     gap: 0;
-
-//     @include desktop {
-//       gap: 8px;
-//     }
-//   }
-
-//   &__link {
-//     display: flex;
-//     gap: 4px;
-//     align-items: center;
-//     padding: 8px 16px;
-//     color: var(--color-main-font);
-//     @include font($fs14, $fw500, -0.56px, 1.29);
-//     font-family: $main-fonts;
-
-//     &.navigation__link--current {
-//       color: var(--color-black-btn);
-//       background-color: var(--color-yellow-btn);
-//       @include font($fs14, $fw700, -0.56px, 1.29);
-//       border-radius: 36px;
-//     }
-//   }
-
-//   &__icon {
-//     fill: var(--color-main-font);
-//   }
-// }
-
 .theme-switcher__toggler {
   width: 40px;
   height: 20px;

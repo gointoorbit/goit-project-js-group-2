@@ -28,18 +28,6 @@
   }
 }
 
-//CZCIONKI
-// Jak stosować - przykłady:
-// @include font(14px, 700, 0.25px, 1.5);
-// @include font(18px, 400, null, null);
-
-@mixin font($font-size, $font-weight, $letter-spacing, $line-heigh) {
-  font-size: $font-size;
-  font-weight: $font-weight;
-  letter-spacing: $letter-spacing;
-  line-height: $line-heigh;
-}
-
 //ANIMATION
 // Jak stosować - przykłady:
 // @include animation(transform);
