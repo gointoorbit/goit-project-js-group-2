@@ -59,10 +59,12 @@ const allCategory = categoryName => {
 //   };
 // }
 
-const adjustBooksList = () => {;
-  if (window.screen.width <= 768) {
+
+const adjustBooksList = () => {
+  booksSection.innerHTML = '';
+  if (window.matchMedia('(max-width: 767px)').matches) {
     return showTopBooks(categoryData, 1);
-  } else if (window.screen.width <= 1440) {
+  } else if (window.matchMedia('(max-width: 1439px)').matches) {
     return showTopBooks(categoryData, 3);
   } else {
     return showTopBooks(categoryData, 5);
