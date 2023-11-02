@@ -53,9 +53,9 @@
     overflow: auto;
     height: 230px;
     width: 335px;
-    line-height: 38px;
+    line-height: 40px;
     @include tablet {
-      height: 426px;
+      height: 474px;
       width: 335px;
       margin-bottom: 0;
     }
@@ -78,6 +78,7 @@
   //   // padding-right: 32px;
   // }
   &__header {
+    transition: color 500ms;
     color: var(--color-header-border);
     font-family: DM Sans;
     font-size: 32px;

@@ -1,6 +1,6 @@
 import { getBooksApi, categoryList, topBooks } from './api.js';
 // import throttle from 'lodash.throttle';
-import { updateBookCount } from './book-count.js';
+import {updateBookCount} from './book-count.js';
 
 const boxCategories = document.querySelector('.categories__list ul');
 const categoryTitle = document.querySelector('.books__header');
@@ -58,6 +58,7 @@ const allCategory = categoryName => {
 //     }
 //   };
 // }
+
 
 const adjustBooksList = () => {
   booksSection.innerHTML = '';
@@ -135,7 +136,7 @@ const showTopBooks = (topBooks, itemNumbers) => {
     categoryCard.classList.add('books__list--category');
     categoryCard.insertAdjacentHTML(
       'beforeend',
-      `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul><div class='books__list--category-see-more'><button class='see-more-btn'>see more</button></div>`,
+      `<span class="books__list--category-name">${category.list_name}</span><ul class="books__list--category-set"></ul><div class='books__list--category-see-more'><button onclick="window.location.href='#gototitle'" class='see-more-btn'>see more</button></div>`,
     );
     let booksArray = category.books;
     let adjustedBooksArray = booksArray.slice(0, itemNumbers);

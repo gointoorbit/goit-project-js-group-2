@@ -2,6 +2,7 @@
   position: fixed;
   z-index: 15;
   width: 100%;
+  transition: background-color 500ms;
   background-color: var(--color-header);
   border: 1.5px solid var(--color-header-border);
   border-radius: 0 0 8px 8px;
