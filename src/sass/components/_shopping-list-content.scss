@@ -16,12 +16,18 @@
   // padding-top: 40px;
   margin-bottom: 40px;
   width: 335px;
-  @include font(32px, 700, -1.28px, 1.1875);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -1.28px;
+  line-height: 1.1875;
   &__accent {
     color: var(--color-purple-title);
   }
   @include tablet {
-    @include font(48px, 700, -1.92px, 1.0833);
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1.92px;
+    line-height: 1.0833;
     width: 704px;
   }
 }
@@ -44,9 +50,15 @@
     text-align: center;
     width: calc(100% - 21px);
     padding: 0 5px;
-    @include font(14px, 400, -0.28px, 1.2857);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.28px;
+    line-height: 1.2857;
     @include tablet {
-      @include font(18px, 400, -0.36px, 1.3333);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.36px;
+      line-height: 1.3333;
       width: 100%;
     }
   }
@@ -97,7 +109,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    @include font(16px, 700, -0.64px, 1.125);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.64px;
+    line-height: 1.125;
     text-transform: uppercase;
     margin-bottom: 4px;
     color: var(--color-header-border);
@@ -114,7 +129,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    @include font(12px, 400, 0.36px, 1.1667);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.36px;
+    line-height: 1.1667;
     margin-bottom: 8px;
     color: var(--color-author-font);
     @include tablet {
@@ -132,7 +150,10 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
-    @include font(14px, 400, -0.56px, 1.2857);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: -0.56px;
+    line-height: 1.2857;
     margin-bottom: 14px;
     color: var(--color-header-border);
     @include tablet {
@@ -148,7 +169,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    @include font(12px, 400, -0.48px, 1.1667);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: -0.48px;
+    line-height: 1.1667;
     font-style: italic;
     margin-bottom: 8px;
     color: var(--color-author-font);

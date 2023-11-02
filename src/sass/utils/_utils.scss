@@ -11,8 +11,18 @@
 
   &--books-list {
     position: absolute;
-    top: 100px;
-    left: 300px;
+    top: 50px;
+    left: 50px;
+
+    @include tablet {
+      top: 100px;
+      left: 250px;
+    }
+
+    @include desktop {
+      top: 100px;
+      left: 300px;
+    }
   }
 
   &--modal {
