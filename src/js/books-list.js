@@ -1,6 +1,6 @@
 import { getBooksApi, categoryList, topBooks } from './api.js';
 // import throttle from 'lodash.throttle';
-import {updateBookCount} from './book-count.js';
+import { updateBookCount } from './book-count.js';
 
 const boxCategories = document.querySelector('.categories__list ul');
 const categoryTitle = document.querySelector('.books__header');
@@ -43,7 +43,7 @@ const allCategory = categoryName => {
     category.innerHTML = `${element.list_name}`;
   });
 
-  boxCategories.addEventListener('click', () => sendCategory(event.target));
+  boxCategories.addEventListener('click', event => sendCategory(event.target));
 };
 
 // function throttling(mainFunction, delay) {
@@ -58,7 +58,6 @@ const allCategory = categoryName => {
 //     }
 //   };
 // }
-
 
 const adjustBooksList = () => {
   booksSection.innerHTML = '';

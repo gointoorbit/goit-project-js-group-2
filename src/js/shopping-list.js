@@ -15,7 +15,7 @@ loaderShoppingList.style.display = 'none';
 // Function: Creating book-card markup and adding to DOM //
 const showMyBook = myBook => {
   const { _id, book_image, title, list_name, description, author, buy_links } = myBook;
-  const markup = `<li class="card-item">
+  const markup = `<li class="card-item" id="${_id}">
         <div class="card-item__box">
           <div class="remove-button">
             <button type="button" class="remove-button__box" data-id="${_id}">
@@ -112,14 +112,15 @@ const removeCard = cardId => {
   const indexToRemove = booksIdList.indexOf(cardId);
   booksIdList.splice(indexToRemove, 1);
   localStorage.save('myBooksId', booksIdList); // <--- "key"
-  cardsList.innerHTML = '';
+  const removedBookElement = document.getElementById(cardId);
+  removedBookElement.remove();
 
   if (booksIdList.length === 0) {
     shoppingEmpty.style.display = 'flex';
     cardsList.removeEventListener('click', removeCardHandler);
     return;
   }
-  renderList(booksIdList);
+
 };
 
 // Event handler: remove button "click" //
