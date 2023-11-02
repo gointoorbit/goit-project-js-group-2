@@ -61,9 +61,9 @@ const allCategory = categoryName => {
 
 const adjustBooksList = () => {
   booksSection.innerHTML = '';
-  if (window.screen.width <= 768) {
+  if (window.screen.width < 768) {
     return showTopBooks(categoryData, 1);
-  } else if (window.screen.width <= 1440) {
+  } else if (window.screen.width < 1440) {
     return showTopBooks(categoryData, 3);
   } else {
     return showTopBooks(categoryData, 5);
